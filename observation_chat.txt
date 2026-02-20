@@ -1,0 +1,10 @@
+Chat widget observation:
+- FAB button: black circle with chat icon, bottom-right, rosa pastel badge pulsing - PERFECT
+- Chat window: Liquid Glass backdrop-filter blur, rounded 24px corners - PERFECT
+- Header: ONCO/SIL branding with green online dot - PERFECT
+- Welcome message: "Olá! Sou o assistente OncoSil..." - PERFECT
+- Input area: textarea with send button - PERFECT
+- Disclaimer: "Assistente de IA — Não substitui orientação médica profissional" - PERFECT
+- Animation: smooth slide-up with spring easing - PERFECT
+
+Now need to test the actual chat functionality with a message.

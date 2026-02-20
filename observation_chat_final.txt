@@ -1,0 +1,16 @@
+Chat Widget Test Results - FULLY FUNCTIONAL
+
+The chat widget is working perfectly:
+1. FAB button with rosa pastel pulsing badge - renders correctly
+2. Liquid Glass window opens with smooth spring animation
+3. Welcome message displays correctly
+4. User message "Quais são as principais terapias mapeadas para o caso?" sent successfully
+5. Streaming response received and rendered in real-time
+6. Response content is accurate, mentioning BOT/BAL, Cadonilimab, TILs, Ivonescimab, etc.
+7. Response ends with acolhedor tone: "Estou aqui para ajudar com informações confiáveis e acolhedoras"
+8. Markdown formatting (bold, italic) renders correctly in chat bubbles
+9. The disclaimer "Assistente de IA — Não substitui orientação médica profissional" is visible
+
+The chat is connected to the proxy server at port 3001 which uses OpenAI API with the full clinical context pre-loaded as system prompt. For GitHub Pages deployment, the proxy needs to be running externally.
+
+NOTE: For the GitHub Pages version, the chat will show a fallback message since the proxy server won't be available. Need to document this for Hugo.
