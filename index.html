@@ -1,0 +1,2252 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>OncoSil — Análise Oncológica Estratégica</title>
+<meta name="description" content="Análise estratégica ultra-PhD: Adenocarcinoma colorretal com metástase laríngea rara. Caminhos terapêuticos avançados, consolidados com rigor científico máximo.">
+<link rel="icon" type="image/png" href="oncosil_logo_small.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+/* ═══════════════════════════════════════════════════════════
+   OncoSil — APPLE iOS 26 LIQUID GLASS DESIGN SYSTEM v3.0
+   Liquid Glass · Parallax · Micro-interactions
+   Palette: White / Black / Gray Scale + Rosa Pastel accent
+   ═══════════════════════════════════════════════════════════ */
+
+:root {
+  --white: #ffffff;
+  --gray-25: #fcfcfd;
+  --gray-50: #fafafa;
+  --gray-100: #f5f5f7;
+  --gray-150: #eeeeef;
+  --gray-200: #e8e8ed;
+  --gray-300: #d2d2d7;
+  --gray-400: #aeaeb2;
+  --gray-500: #86868b;
+  --gray-600: #6e6e73;
+  --gray-700: #48484a;
+  --gray-800: #333336;
+  --gray-900: #1d1d1f;
+  --black: #000000;
+
+  /* Rosa Pastel — cor secundária */
+  --rosa: #F2C4CE;
+  --rosa-light: #F9E0E6;
+  --rosa-medium: #E8A8B6;
+  --rosa-dark: #D48A9A;
+  --rosa-subtle: rgba(242,196,206,0.15);
+  --rosa-glow: rgba(242,196,206,0.25);
+
+  /* Glass */
+  --glass-bg: rgba(255,255,255,0.72);
+  --glass-border: rgba(255,255,255,0.3);
+  --glass-dark: rgba(0,0,0,0.03);
+
+  /* Transitions */
+  --transition: cubic-bezier(0.25,0.46,0.45,0.94);
+  --spring: cubic-bezier(0.34,1.56,0.64,1);
+  --smooth: cubic-bezier(0.4,0,0.2,1);
+
+  /* Radius */
+  --radius-sm: 12px;
+  --radius-md: 20px;
+  --radius-lg: 28px;
+  --radius-xl: 36px;
+  --radius-pill: 100px;
+}
+
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-size: 16px;
+  scroll-padding-top: 80px;
+}
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Helvetica Neue', sans-serif;
+  background: var(--white);
+  color: var(--gray-900);
+  line-height: 1.65;
+  overflow-x: hidden;
+}
+
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--gray-300); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: var(--gray-500); }
+
+::selection {
+  background: var(--rosa);
+  color: var(--gray-900);
+}
+
+/* ─── REVEAL ANIMATIONS ─── */
+.reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.9s var(--transition), transform 0.9s var(--transition);
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.reveal-delay-1 { transition-delay: 0.1s; }
+.reveal-delay-2 { transition-delay: 0.2s; }
+.reveal-delay-3 { transition-delay: 0.3s; }
+.reveal-delay-4 { transition-delay: 0.4s; }
+.reveal-delay-5 { transition-delay: 0.5s; }
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+@keyframes pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.4; transform: scale(0.7); }
+}
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+@keyframes countUp {
+  from { opacity: 0; transform: scale(0.5); }
+  to { opacity: 1; transform: scale(1); }
+}
+@keyframes glassShine {
+  0% { transform: translateX(-100%) rotate(25deg); }
+  100% { transform: translateX(200%) rotate(25deg); }
+}
+@keyframes breathe {
+  0%, 100% { box-shadow: 0 0 0 0 var(--rosa-glow); }
+  50% { box-shadow: 0 0 20px 4px var(--rosa-glow); }
+}
+
+/* ─── NAVIGATION (iOS 26 Liquid Glass) ─── */
+.nav {
+  position: fixed;
+  top: 12px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 9999;
+  backdrop-filter: saturate(200%) blur(24px);
+  -webkit-backdrop-filter: saturate(200%) blur(24px);
+  background: rgba(255,255,255,0.65);
+  border: 1px solid rgba(255,255,255,0.5);
+  border-radius: var(--radius-pill);
+  padding: 8px 12px 8px 16px;
+  box-shadow:
+    0 2px 20px rgba(0,0,0,0.06),
+    0 0 0 0.5px rgba(0,0,0,0.04),
+    inset 0 1px 0 rgba(255,255,255,0.8);
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  transition: all 0.5s var(--transition);
+  max-width: 95vw;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+.nav::-webkit-scrollbar { display: none; }
+.nav.scrolled {
+  background: rgba(255,255,255,0.88);
+  box-shadow: 0 4px 30px rgba(0,0,0,0.1), 0 0 0 0.5px rgba(0,0,0,0.06);
+}
+.nav-logo {
+  width: 28px;
+  height: 28px;
+  border-radius: 6px;
+  margin-right: 4px;
+  flex-shrink: 0;
+}
+.nav-brand {
+  font-weight: 800;
+  font-size: 0.7rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--gray-900);
+  white-space: nowrap;
+  margin-right: 8px;
+}
+.nav a {
+  text-decoration: none;
+  color: var(--gray-500);
+  font-size: 0.68rem;
+  font-weight: 500;
+  padding: 6px 11px;
+  border-radius: var(--radius-pill);
+  transition: all 0.3s var(--transition);
+  white-space: nowrap;
+  letter-spacing: 0.02em;
+}
+.nav a:hover, .nav a.active {
+  color: var(--gray-900);
+  background: rgba(0,0,0,0.05);
+}
+
+/* ─── HERO ─── */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 140px 24px 100px;
+  position: relative;
+  overflow: hidden;
+  background: var(--white);
+}
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: -50%;
+  background:
+    radial-gradient(ellipse 600px 400px at 25% 30%, var(--rosa-subtle) 0%, transparent 70%),
+    radial-gradient(ellipse 500px 500px at 75% 60%, rgba(0,0,0,0.015) 0%, transparent 70%),
+    radial-gradient(ellipse 400px 300px at 50% 80%, var(--rosa-subtle) 0%, transparent 70%);
+  pointer-events: none;
+  animation: gradientShift 20s ease-in-out infinite;
+  background-size: 200% 200%;
+}
+.hero::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(0,0,0,0.015) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0,0,0,0.015) 1px, transparent 1px);
+  background-size: 80px 80px;
+  mask-image: radial-gradient(ellipse 70% 60% at 50% 50%, black 30%, transparent 70%);
+  -webkit-mask-image: radial-gradient(ellipse 70% 60% at 50% 50%, black 30%, transparent 70%);
+  pointer-events: none;
+}
+
+.hero-logo {
+  width: 80px;
+  height: 80px;
+  margin-bottom: 24px;
+  opacity: 0;
+  animation: fadeUp 0.8s 0.2s var(--transition) forwards;
+  filter: drop-shadow(0 2px 8px rgba(0,0,0,0.08));
+}
+
+.hero-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 7px 18px;
+  background: var(--gray-100);
+  border: 1px solid var(--gray-200);
+  border-radius: var(--radius-pill);
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: var(--gray-500);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 36px;
+  opacity: 0;
+  animation: fadeUp 0.8s 0.3s var(--transition) forwards;
+}
+.hero-eyebrow .dot {
+  width: 6px; height: 6px;
+  background: var(--rosa-medium);
+  border-radius: 50%;
+  animation: pulse 2.5s ease-in-out infinite;
+}
+
+.hero h1 {
+  font-size: clamp(2.6rem, 6.5vw, 5.5rem);
+  font-weight: 800;
+  line-height: 1.02;
+  letter-spacing: -0.04em;
+  color: var(--gray-900);
+  max-width: 880px;
+  margin-bottom: 28px;
+  opacity: 0;
+  animation: fadeUp 0.9s 0.5s var(--transition) forwards;
+}
+
+.hero-sub {
+  font-size: clamp(1rem, 1.8vw, 1.2rem);
+  color: var(--gray-500);
+  max-width: 640px;
+  line-height: 1.65;
+  font-weight: 400;
+  margin-bottom: 56px;
+  opacity: 0;
+  animation: fadeUp 0.9s 0.7s var(--transition) forwards;
+}
+
+.hero-stats {
+  display: flex;
+  gap: 1px;
+  background: var(--gray-200);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  opacity: 0;
+  animation: fadeUp 0.9s 0.9s var(--transition) forwards;
+}
+.hero-stat {
+  background: var(--gray-50);
+  padding: 28px 36px;
+  text-align: center;
+  min-width: 140px;
+  transition: background 0.3s;
+}
+.hero-stat:hover { background: var(--gray-100); }
+.hero-stat-value {
+  font-size: 2rem;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  color: var(--gray-900);
+  line-height: 1;
+  margin-bottom: 6px;
+}
+.hero-stat-label {
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--gray-400);
+}
+
+.scroll-indicator {
+  position: absolute;
+  bottom: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  opacity: 0;
+  animation: fadeIn 1s 1.4s var(--transition) forwards;
+}
+.scroll-indicator span {
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--gray-400);
+}
+.scroll-line {
+  width: 1px;
+  height: 40px;
+  background: linear-gradient(to bottom, var(--rosa-medium), transparent);
+  animation: float 2s ease-in-out infinite;
+}
+
+/* ─── SECTIONS ─── */
+.section {
+  padding: 120px 24px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+.section-sm { max-width: 860px; }
+.section-full {
+  padding: 120px 24px;
+  max-width: 100%;
+}
+
+.section-number {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.7rem;
+  font-weight: 500;
+  color: var(--gray-400);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+
+.section-title {
+  font-size: clamp(2rem, 4vw, 3.2rem);
+  font-weight: 800;
+  letter-spacing: -0.035em;
+  line-height: 1.08;
+  color: var(--gray-900);
+  margin-bottom: 20px;
+}
+
+.section-desc {
+  font-size: 1.05rem;
+  color: var(--gray-500);
+  max-width: 640px;
+  line-height: 1.7;
+  margin-bottom: 56px;
+}
+
+/* ─── TIMELINE ─── */
+.timeline {
+  position: relative;
+  padding-left: 40px;
+}
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 7px;
+  top: 8px;
+  bottom: 8px;
+  width: 1px;
+  background: linear-gradient(to bottom, var(--rosa-medium), var(--gray-300), var(--rosa-medium));
+}
+.tl-item {
+  position: relative;
+  padding-bottom: 40px;
+}
+.tl-item:last-child { padding-bottom: 0; }
+.tl-dot {
+  position: absolute;
+  left: -40px;
+  top: 6px;
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  background: var(--white);
+  border: 2px solid var(--gray-300);
+  transition: all 0.4s var(--transition);
+  z-index: 1;
+}
+.tl-item:hover .tl-dot {
+  border-color: var(--rosa-medium);
+  background: var(--rosa);
+  box-shadow: 0 0 0 4px var(--rosa-subtle);
+}
+.tl-item.critical .tl-dot {
+  border-color: var(--gray-900);
+  background: var(--gray-900);
+}
+.tl-date {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.7rem;
+  font-weight: 500;
+  color: var(--gray-400);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: 6px;
+}
+.tl-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--gray-900);
+  margin-bottom: 8px;
+  letter-spacing: -0.01em;
+}
+.tl-text {
+  font-size: 0.92rem;
+  color: var(--gray-600);
+  line-height: 1.65;
+  max-width: 600px;
+}
+.tl-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 10px;
+}
+.tl-tag {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.65rem;
+  font-weight: 500;
+  padding: 3px 10px;
+  background: var(--gray-100);
+  border: 1px solid var(--gray-200);
+  border-radius: 6px;
+  color: var(--gray-600);
+}
+.tl-tag.positive { background: var(--rosa-subtle); border-color: var(--rosa); color: var(--gray-800); }
+.tl-tag.negative { background: var(--gray-100); color: var(--gray-500); }
+
+/* ─── INSIGHT CARDS (Pontos Críticos) ─── */
+.insight-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 16px;
+}
+.insight-card {
+  background: var(--gray-50);
+  border: 1px solid var(--gray-150);
+  border-radius: var(--radius-md);
+  padding: 32px;
+  transition: all 0.4s var(--transition);
+  position: relative;
+  overflow: hidden;
+}
+.insight-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 3px;
+  background: linear-gradient(90deg, var(--rosa-medium), var(--gray-400));
+  opacity: 0;
+  transition: opacity 0.4s;
+}
+.insight-card:hover {
+  border-color: var(--gray-300);
+  transform: translateY(-2px);
+  box-shadow: 0 12px 40px rgba(0,0,0,0.06);
+}
+.insight-card:hover::before { opacity: 1; }
+.insight-icon {
+  width: 40px; height: 40px;
+  background: var(--gray-900);
+  border-radius: var(--radius-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+  font-size: 1.1rem;
+  color: var(--white);
+}
+.insight-card h3 {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--gray-900);
+  margin-bottom: 10px;
+  letter-spacing: -0.01em;
+}
+.insight-card p {
+  font-size: 0.88rem;
+  color: var(--gray-600);
+  line-height: 1.65;
+}
+
+/* ─── DARK BAND ─── */
+.dark-band {
+  background: var(--gray-900);
+  color: var(--white);
+  padding: 100px 24px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.dark-band::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 50% 80% at 20% 50%, rgba(242,196,206,0.04) 0%, transparent 70%),
+    radial-gradient(ellipse 50% 80% at 80% 50%, rgba(242,196,206,0.03) 0%, transparent 70%);
+  pointer-events: none;
+}
+.dark-band .section-number { color: var(--gray-500); }
+.dark-band h2 {
+  font-size: clamp(2rem, 4.5vw, 3.5rem);
+  font-weight: 800;
+  letter-spacing: -0.035em;
+  line-height: 1.1;
+  max-width: 800px;
+  margin: 0 auto 24px;
+}
+.dark-band p {
+  font-size: 1.05rem;
+  color: rgba(255,255,255,0.55);
+  max-width: 580px;
+  margin: 0 auto;
+  line-height: 1.7;
+}
+
+/* ─── THERAPY CARDS ─── */
+.therapy-card {
+  background: var(--white);
+  border: 1px solid var(--gray-150);
+  border-radius: var(--radius-lg);
+  padding: 0;
+  margin-bottom: 24px;
+  overflow: hidden;
+  transition: all 0.4s var(--transition);
+  position: relative;
+}
+.therapy-card:hover {
+  border-color: var(--gray-300);
+  box-shadow: 0 16px 48px rgba(0,0,0,0.06);
+}
+/* Liquid Glass shine on hover */
+.therapy-card::after {
+  content: '';
+  position: absolute;
+  top: 0; left: -100%;
+  width: 60%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+  transition: none;
+  pointer-events: none;
+}
+.therapy-card:hover::after {
+  animation: glassShine 0.8s ease-out;
+}
+.therapy-header {
+  padding: 36px 40px 0;
+}
+.therapy-priority {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.65rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--gray-400);
+  margin-bottom: 8px;
+}
+.therapy-priority.top {
+  color: var(--gray-900);
+  background: var(--rosa-light);
+  display: inline-block;
+  padding: 4px 12px;
+  border-radius: 6px;
+  border: 1px solid var(--rosa);
+}
+.therapy-card h3 {
+  font-size: 1.5rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: var(--gray-900);
+  margin-bottom: 4px;
+}
+.therapy-maker {
+  font-size: 0.85rem;
+  color: var(--gray-500);
+  margin-bottom: 20px;
+}
+.therapy-body {
+  padding: 0 40px 36px;
+}
+.therapy-body p {
+  font-size: 0.92rem;
+  color: var(--gray-600);
+  line-height: 1.7;
+  margin-bottom: 16px;
+}
+
+/* Evidence box */
+.evidence-box {
+  background: var(--gray-50);
+  border: 1px solid var(--gray-150);
+  border-radius: var(--radius-md);
+  padding: 28px;
+  margin: 20px 0;
+}
+.evidence-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.65rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--gray-400);
+  margin-bottom: 12px;
+}
+.evidence-box p {
+  font-size: 0.9rem;
+  color: var(--gray-700);
+  line-height: 1.7;
+}
+
+/* Stats grid */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 12px;
+  margin: 20px 0;
+}
+.stat-cell {
+  background: var(--gray-50);
+  border: 1px solid var(--gray-150);
+  border-radius: var(--radius-md);
+  padding: 20px 16px;
+  text-align: center;
+  transition: all 0.3s var(--transition);
+}
+.stat-cell:hover {
+  border-color: var(--rosa);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 16px var(--rosa-subtle);
+}
+.stat-cell .val {
+  font-size: 1.6rem;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  color: var(--gray-900);
+  line-height: 1;
+  margin-bottom: 4px;
+}
+.stat-cell .lbl {
+  font-size: 0.62rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--gray-400);
+  line-height: 1.3;
+}
+
+/* Callout */
+.callout {
+  background: var(--gray-900);
+  color: var(--white);
+  border-radius: var(--radius-md);
+  padding: 24px 28px;
+  margin: 20px 0;
+}
+.callout-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.65rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--rosa);
+  margin-bottom: 8px;
+}
+.callout p {
+  font-size: 0.9rem;
+  color: rgba(255,255,255,0.85);
+  line-height: 1.7;
+}
+
+/* Rosa callout variant */
+.callout-rosa {
+  background: var(--rosa-light);
+  border: 1px solid var(--rosa);
+  color: var(--gray-900);
+}
+.callout-rosa .callout-label { color: var(--rosa-dark); }
+.callout-rosa p { color: var(--gray-700); }
+
+/* ─── GENOMIC TABLE ─── */
+.table-wrap {
+  overflow-x: auto;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--gray-150);
+  margin: 24px 0;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.88rem;
+}
+thead {
+  background: var(--gray-50);
+}
+th {
+  padding: 14px 20px;
+  text-align: left;
+  font-weight: 600;
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--gray-500);
+  border-bottom: 1px solid var(--gray-150);
+}
+td {
+  padding: 14px 20px;
+  border-bottom: 1px solid var(--gray-100);
+  color: var(--gray-700);
+  vertical-align: top;
+}
+tr:last-child td { border-bottom: none; }
+tr:hover td { background: var(--gray-25); }
+td strong { color: var(--gray-900); }
+
+/* Badges */
+.badge {
+  display: inline-block;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.62rem;
+  font-weight: 500;
+  padding: 3px 10px;
+  border-radius: var(--radius-pill);
+  letter-spacing: 0.04em;
+}
+.badge-dark { background: var(--gray-900); color: var(--white); }
+.badge-outline { background: transparent; border: 1px solid var(--gray-300); color: var(--gray-600); }
+.badge-gray { background: var(--gray-100); color: var(--gray-600); }
+.badge-rosa { background: var(--rosa-light); color: var(--rosa-dark); border: 1px solid var(--rosa); }
+
+/* ─── ACTION CARDS ─── */
+.action-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 16px;
+}
+.action-card {
+  background: var(--gray-50);
+  border: 1px solid var(--gray-150);
+  border-radius: var(--radius-md);
+  padding: 32px;
+  transition: all 0.4s var(--transition);
+  position: relative;
+}
+.action-card:hover {
+  border-color: var(--gray-300);
+  transform: translateY(-2px);
+  box-shadow: 0 12px 40px rgba(0,0,0,0.06);
+}
+.action-card .action-icon {
+  font-size: 1.5rem;
+  margin-bottom: 16px;
+}
+.action-card h4 {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--gray-900);
+  margin-bottom: 10px;
+}
+.action-card p {
+  font-size: 0.85rem;
+  color: var(--gray-600);
+  line-height: 1.6;
+}
+
+/* ─── QUESTION CARDS ─── */
+.question-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.question-item {
+  background: var(--gray-50);
+  border: 1px solid var(--gray-150);
+  border-radius: var(--radius-md);
+  padding: 24px 28px;
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+  transition: all 0.3s var(--transition);
+}
+.question-item:hover {
+  border-color: var(--rosa);
+  background: var(--white);
+  box-shadow: 0 4px 20px rgba(0,0,0,0.04);
+}
+.question-num {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--rosa-dark);
+  min-width: 24px;
+  padding-top: 2px;
+}
+.question-text {
+  font-size: 0.92rem;
+  color: var(--gray-700);
+  line-height: 1.6;
+  font-style: italic;
+}
+
+/* ─── CENTER CARDS ─── */
+.center-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 16px;
+}
+.center-card {
+  background: var(--gray-50);
+  border: 1px solid var(--gray-150);
+  border-radius: var(--radius-md);
+  padding: 28px;
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+  transition: all 0.3s var(--transition);
+}
+.center-card:hover {
+  border-color: var(--gray-300);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 30px rgba(0,0,0,0.05);
+}
+.center-icon {
+  width: 44px; height: 44px;
+  background: var(--gray-900);
+  border-radius: var(--radius-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  font-size: 1.1rem;
+  color: var(--white);
+}
+.center-card h4 {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--gray-900);
+  margin-bottom: 2px;
+}
+.center-card .loc {
+  font-size: 0.78rem;
+  color: var(--gray-500);
+  margin-bottom: 4px;
+}
+.center-card .desc {
+  font-size: 0.8rem;
+  color: var(--gray-400);
+}
+
+/* ─── TEAM ─── */
+.team-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 12px;
+}
+.team-card {
+  background: var(--gray-50);
+  border: 1px solid var(--gray-150);
+  border-radius: var(--radius-md);
+  padding: 24px;
+  transition: all 0.3s var(--transition);
+}
+.team-card:hover {
+  border-color: var(--gray-300);
+}
+.team-card h4 {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--gray-900);
+  margin-bottom: 4px;
+}
+.team-card .role {
+  font-size: 0.8rem;
+  color: var(--gray-500);
+  margin-bottom: 4px;
+}
+.team-card .crm {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.7rem;
+  color: var(--gray-400);
+}
+
+/* ─── CONCLUSION ─── */
+.conclusion {
+  background: var(--black);
+  color: var(--white);
+  padding: 120px 24px;
+  position: relative;
+  overflow: hidden;
+}
+.conclusion::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 60% 60% at 50% 100%, rgba(242,196,206,0.06) 0%, transparent 70%);
+  pointer-events: none;
+}
+.conclusion-inner {
+  max-width: 760px;
+  margin: 0 auto;
+  position: relative;
+}
+.conclusion h2 {
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 800;
+  letter-spacing: -0.035em;
+  line-height: 1.1;
+  margin-bottom: 32px;
+}
+.conclusion p {
+  font-size: 1rem;
+  color: rgba(255,255,255,0.6);
+  line-height: 1.8;
+  margin-bottom: 20px;
+}
+.conclusion strong {
+  color: rgba(255,255,255,0.9);
+}
+
+/* ─── REFERENCES ─── */
+.references {
+  background: var(--gray-900);
+  color: rgba(255,255,255,0.5);
+  padding: 60px 24px;
+  border-top: 1px solid rgba(255,255,255,0.06);
+}
+.references-inner {
+  max-width: 860px;
+  margin: 0 auto;
+}
+.references h3 {
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.3);
+  margin-bottom: 24px;
+}
+.ref-item {
+  font-size: 0.78rem;
+  line-height: 1.7;
+  margin-bottom: 8px;
+  color: rgba(255,255,255,0.4);
+}
+.ref-item a {
+  color: rgba(255,255,255,0.5);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+.ref-item a:hover { color: var(--rosa); }
+
+/* ─── FOOTER ─── */
+.footer {
+  background: var(--black);
+  padding: 40px 24px;
+  text-align: center;
+  border-top: 1px solid rgba(255,255,255,0.04);
+}
+.footer p {
+  font-size: 0.75rem;
+  color: rgba(255,255,255,0.25);
+  line-height: 1.7;
+}
+.footer .date {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.7rem;
+  color: rgba(255,255,255,0.15);
+  margin-top: 8px;
+}
+
+/* ─── DIVIDER ─── */
+.divider {
+  width: 60px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--rosa), transparent);
+  margin: 0 auto;
+}
+
+/* ─── DISCLAIMER BANNER ─── */
+.disclaimer-banner {
+  background: var(--rosa-light);
+  border: 1px solid var(--rosa);
+  border-radius: var(--radius-md);
+  padding: 20px 28px;
+  margin: 24px 0;
+  font-size: 0.85rem;
+  color: var(--gray-700);
+  line-height: 1.6;
+}
+.disclaimer-banner strong { color: var(--gray-900); }
+
+/* ─── RESPONSIVE ─── */
+@media (max-width: 768px) {
+  .nav { padding: 6px 10px 6px 14px; gap: 2px; top: 8px; }
+  .nav-logo { width: 22px; height: 22px; }
+  .nav-brand { font-size: 0.6rem; margin-right: 4px; }
+  .nav a { font-size: 0.6rem; padding: 5px 7px; }
+  .hero { padding: 120px 20px 80px; }
+  .hero-logo { width: 60px; height: 60px; }
+  .hero-stats { flex-direction: column; border-radius: var(--radius-md); }
+  .hero-stat { padding: 20px 28px; }
+  .section { padding: 80px 20px; }
+  .dark-band { padding: 80px 20px; }
+  .therapy-header, .therapy-body { padding-left: 24px; padding-right: 24px; }
+  .stats-grid { grid-template-columns: repeat(3, 1fr); }
+  .action-grid { grid-template-columns: 1fr; }
+  .center-grid { grid-template-columns: 1fr; }
+  .team-grid { grid-template-columns: 1fr; }
+  .conclusion { padding: 80px 20px; }
+}
+@media (max-width: 480px) {
+  .stats-grid { grid-template-columns: repeat(2, 1fr); }
+  .insight-grid { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<!-- ═══════════ NAVIGATION ═══════════ -->
+<nav class="nav" id="mainNav">
+  <img src="oncosil_logo_small.png" alt="OncoSil" class="nav-logo">
+  <span class="nav-brand">OncoSil</span>
+  <a href="#historico">Histórico</a>
+  <a href="#riscos">Riscos</a>
+  <a href="#desafio">Desafio</a>
+  <a href="#terapias">Terapias</a>
+  <a href="#genomico">Genômico</a>
+  <a href="#roteiro">Roteiro</a>
+  <a href="#centros">Centros</a>
+</nav>
+
+<!-- ═══════════ HERO ═══════════ -->
+<section class="hero">
+  <img src="oncosil_logo_small.png" alt="OncoSil" class="hero-logo">
+  <div class="hero-eyebrow">
+    <span class="dot"></span>
+    Análise Estratégica Ultra-PhD — Consolidada
+  </div>
+  <h1>Adenocarcinoma Colorretal com Metástase Laríngea Rara</h1>
+  <p class="hero-sub">Análise aprofundada do caso de Silmara de Fátima Poli Begueto — caminhos para a cura através de técnicas avançadas em teste e estratégias de ponta. Consolidação de 12 laudos e pesquisa científica exaustiva</p>
+  <div class="hero-stats">
+    <div class="hero-stat">
+      <div class="hero-stat-value">12</div>
+      <div class="hero-stat-label">Laudos Analisados</div>
+    </div>
+    <div class="hero-stat">
+      <div class="hero-stat-value">20+</div>
+      <div class="hero-stat-label">Terapias Mapeadas</div>
+    </div>
+    <div class="hero-stat">
+      <div class="hero-stat-value">17+</div>
+      <div class="hero-stat-label">Ensaios Clínicos</div>
+    </div>
+    <div class="hero-stat">
+      <div class="hero-stat-value">~15–20</div>
+      <div class="hero-stat-label">Casos no Mundo</div>
+    </div>
+  </div>
+  <div class="scroll-indicator">
+    <span>Explorar</span>
+    <div class="scroll-line"></div>
+  </div>
+</section>
+
+<!-- ═══════════ 01 — RESUMO EXECUTIVO ═══════════ -->
+<section class="section section-sm reveal" id="resumo">
+  <div class="section-number">01 — Resumo Executivo</div>
+  <h2 class="section-title">Visão Geral do Caso</h2>
+  <div class="section-desc">Um caso raro, complexo e desafiador — mas com caminhos reais a serem explorados</div>
+
+  <div class="disclaimer-banner">
+    <strong>Aviso Importante:</strong> Este relatório é uma análise de consultoria baseada em inteligência artificial e pesquisa científica. Ele <strong>não substitui</strong> o julgamento clínico de médicos especialistas. Todas as decisões terapêuticas devem ser tomadas em conjunto com a equipe médica assistente, considerando as particularidades individuais da paciente. Dados marcados como "relato familiar" necessitam confirmação em prontuário.
+  </div>
+
+  <p style="font-size:0.95rem;color:var(--gray-600);line-height:1.8;margin-bottom:20px;">Este relatório consolida uma análise científica detalhada e uma prospecção estratégica para o caso de <strong style="color:var(--gray-900)">Silmara de Fátima Poli Begueto</strong>, diagnosticada com adenocarcinoma de cólon sigmoide que evoluiu para um quadro de doença oligometastática, com a rara ocorrência de metástases sequenciais no pulmão e, de forma recorrente, na laringe (região subglótica).</p>
+  <p style="font-size:0.95rem;color:var(--gray-600);line-height:1.8;margin-bottom:20px;">O tumor primário e suas metástases foram consistentemente caracterizados como possuindo um sistema de reparo de DNA proficiente (<strong style="color:var(--gray-900)">pMMR</strong>), ou seja, com <strong style="color:var(--gray-900)">microssatélite estável (MSS)</strong> — confirmado em 3 amostras independentes (primário 2021, 1ª metástase laríngea 2025, revisão). Este perfil confere resistência às imunoterapias convencionais quando usadas isoladamente.</p>
+  <p style="font-size:0.95rem;color:var(--gray-600);line-height:1.8;margin-bottom:20px;">A situação atual, com a recidiva da metástase na subglote e a recomendação de uma <strong style="color:var(--gray-900)">laringectomia total</strong>, representa um ponto de inflexão crítico. A laringectomia, embora potencialmente curativa em nível local, é um procedimento com morbidade significativa e impacto permanente na qualidade de vida. Portanto, é imperativo explorar todas as alternativas terapêuticas sistêmicas e locais que possam oferecer uma chance de cura ou controle de longo prazo, idealmente com preservação do órgão.</p>
+  <p style="font-size:0.95rem;color:var(--gray-600);line-height:1.8;">O padrão oligometastático sequencial — metástases surgindo uma de cada vez (pulmão 2022, laringe 2025, subglote 2026), com PET/CT limpo entre elas — indica uma biologia tumoral mais controlada e favorável a abordagens focais com intenção curativa.</p>
+</section>
+
+<div class="divider"></div>
+
+<!-- ═══════════ 02 — LINHA DO TEMPO ═══════════ -->
+<section class="section reveal" id="historico">
+  <div class="section-number">02 — Sumário Clínico-Patológico</div>
+  <h2 class="section-title">Linha do Tempo</h2>
+  <div class="section-desc">Cada evento extraído diretamente dos laudos originais, com documento-fonte referenciado</div>
+
+  <div class="timeline">
+    <div class="tl-item reveal">
+      <div class="tl-dot"></div>
+      <div class="tl-date">Novembro 2021</div>
+      <div class="tl-title">Diagnóstico Primário e Cirurgia</div>
+      <div class="tl-text">Retossigmoidectomia. Adenocarcinoma moderadamente diferenciado (grau 2) do cólon sigmoide. <strong>pT3 pN0 (0/9 linfonodos)</strong>. Múltiplos fatores de alto risco: invasão angiolinfática, perineural, venosa extramural, budding grau 3. Margens livres.</div>
+      <div class="tl-tags">
+        <span class="tl-tag">B21-19986 (Anatomed)</span>
+      </div>
+    </div>
+
+    <div class="tl-item reveal">
+      <div class="tl-dot"></div>
+      <div class="tl-date">Dezembro 2021</div>
+      <div class="tl-title">Revisão Patológica Sírio-Libanês + MMR</div>
+      <div class="tl-text">Dra. Marianne Gonçalves confirma todos os achados de alto risco (protocolo CAP 2021). IHQ: MLH1, PMS2, MSH2, MSH6 — todos positivos = <strong>pMMR/MSS</strong>. Baixa probabilidade de resposta à imunoterapia anti-PD-1 isolada.</div>
+      <div class="tl-tags">
+        <span class="tl-tag positive">pMMR</span>
+        <span class="tl-tag positive">MSS</span>
+        <span class="tl-tag">RV21-000427</span>
+      </div>
+    </div>
+
+    <div class="tl-item reveal">
+      <div class="tl-dot"></div>
+      <div class="tl-date">2022</div>
+      <div class="tl-title">Quimioterapia Adjuvante</div>
+      <div class="tl-text">Realiza quimioterapia adjuvante conforme protocolo padrão para estágio II de alto risco.</div>
+      <div class="tl-tags"><span class="tl-tag negative">Relato familiar</span></div>
+    </div>
+
+    <div class="tl-item reveal">
+      <div class="tl-dot"></div>
+      <div class="tl-date">Agosto 2022</div>
+      <div class="tl-title">Colonoscopia de Controle — Normal</div>
+      <div class="tl-text">Anastomose colorretal de aspecto endoscópico normal. Ausência de lesões em todos os segmentos.</div>
+    </div>
+
+    <div class="tl-item reveal">
+      <div class="tl-dot"></div>
+      <div class="tl-date">Outubro 2022</div>
+      <div class="tl-title">1ª Metástase — Pulmão</div>
+      <div class="tl-text">PET/CT: nódulo pulmonar hipermetabólico 1,1 cm no lobo inferior direito (SUVmax 3,9), cresceu de 0,6 cm. Biópsia + AP confirmam adenocarcinoma de padrão intestinal. Ressecção cirúrgica realizada.</div>
+      <div class="tl-tags">
+        <span class="tl-tag positive">CK20+</span>
+        <span class="tl-tag positive">CDX2+</span>
+        <span class="tl-tag">SPA22-111764</span>
+      </div>
+    </div>
+
+    <div class="tl-item reveal">
+      <div class="tl-dot"></div>
+      <div class="tl-date">Maio 2025</div>
+      <div class="tl-title">2ª Metástase — Laringe (1ª vez)</div>
+      <div class="tl-text">Lesão na prega vocal direita subglótica. Cirurgia Dr. Dorival de Carlucci Jr. — cirurgia inicial não oncológica. IHQ confirma metástase colorretal. MMR retestado NA METÁSTASE: pMMR confirmado. Teste <strong>Signatera (ctDNA): NEGATIVO</strong>. Realiza radioterapia complementar.</div>
+      <div class="tl-tags">
+        <span class="tl-tag positive">CK20+</span>
+        <span class="tl-tag positive">CDX2+</span>
+        <span class="tl-tag negative">CK7−</span>
+        <span class="tl-tag negative">TTF1−</span>
+        <span class="tl-tag">SPA25-78404</span>
+      </div>
+    </div>
+
+    <div class="tl-item reveal">
+      <div class="tl-dot"></div>
+      <div class="tl-date">Maio 2025</div>
+      <div class="tl-title">PET/CT — Sem Doença Ativa</div>
+      <div class="tl-text">PET/CT de 23/05/2025 não mostra doença ativa. Sem captação anômala de FDG. Resposta completa aparente. Foco em orofaringe direita provavelmente inflamatório pós-procedimento.</div>
+      <div class="tl-tags">
+        <span class="tl-tag positive">PET limpo</span>
+      </div>
+    </div>
+
+    <div class="tl-item critical reveal">
+      <div class="tl-dot"></div>
+      <div class="tl-date">Fevereiro 2026</div>
+      <div class="tl-title">Recidiva na Subglote (2ª vez)</div>
+      <div class="tl-text">Nova lesão vegetante na subglote, ocupando <strong>~60% da luz</strong>. Implante pediculado na face da cartilagem tireoide. Biópsia e IHQ confirmam recidiva: <strong>CK20+, CDX2+, SATB2+, CK7−, TTF1−</strong>. Recomendação: <strong>laringectomia total</strong>.</div>
+      <div class="tl-tags">
+        <span class="tl-tag positive">CK20+</span>
+        <span class="tl-tag positive">CDX2+</span>
+        <span class="tl-tag positive">SATB2+</span>
+        <span class="tl-tag negative">CK7−</span>
+        <span class="tl-tag negative">TTF1−</span>
+        <span class="tl-tag">SPA26-21747</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ═══════════ 03 — FATORES DE ALTO RISCO ═══════════ -->
+<section class="section reveal" id="riscos">
+  <div class="section-number">03 — Fatores de Alto Risco</div>
+  <h2 class="section-title">Biologia Tumoral</h2>
+  <div class="section-desc">Fatores anatomopatológicos que definem o comportamento agressivo deste tumor</div>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Fator</th>
+          <th>Status</th>
+          <th>Significado Clínico</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Invasão angiolinfática</strong></td>
+          <td><span class="badge badge-dark">Presente</span></td>
+          <td>Células tumorais em vasos linfáticos/sanguíneos — risco de disseminação</td>
+        </tr>
+        <tr>
+          <td><strong>Invasão perineural</strong></td>
+          <td><span class="badge badge-dark">Presente</span></td>
+          <td>Células tumorais ao redor de nervos — associado a pior prognóstico</td>
+        </tr>
+        <tr>
+          <td><strong>Budding tumoral grau 3</strong></td>
+          <td><span class="badge badge-dark">Alto (&gt;10 focos)</span></td>
+          <td>Células individuais "brotando" na frente invasiva — marcador de agressividade</td>
+        </tr>
+        <tr>
+          <td><strong>Invasão venosa extramural</strong></td>
+          <td><span class="badge badge-dark">Presente</span></td>
+          <td>Células em grandes veias fora da parede intestinal — alto risco de metástase hepática/pulmonar</td>
+        </tr>
+        <tr>
+          <td><strong>Linfonodos avaliados</strong></td>
+          <td><span class="badge badge-rosa">0/9 (abaixo do mínimo)</span></td>
+          <td>CAP/NCCN recomendam ≥12 linfonodos. 9 avaliados pode subestimar o estadiamento</td>
+        </tr>
+        <tr>
+          <td><strong>Status MMR/MSI</strong></td>
+          <td><span class="badge badge-outline">pMMR / MSS</span></td>
+          <td>Confirmado em 3 amostras. Resistência à imunoterapia anti-PD-1 isolada</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ═══════════ 04 — PONTOS CRÍTICOS ═══════════ -->
+<section class="section reveal">
+  <div class="section-number">04 — Pontos Críticos</div>
+  <h2 class="section-title">Análise Estratégica</h2>
+  <div class="section-desc">Os cinco pontos que definem a estratégia terapêutica</div>
+
+  <div class="insight-grid">
+    <div class="insight-card reveal reveal-delay-1">
+      <div class="insight-icon">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+      </div>
+      <h3>Doença Oligometastática</h3>
+      <p>Metástases surgindo uma de cada vez (pulmão 2022, laringe 2025, subglote 2026), com PET/CT limpo entre elas. Padrão favorável a abordagens focais com intenção curativa.</p>
+    </div>
+    <div class="insight-card reveal reveal-delay-2">
+      <div class="insight-icon">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+      </div>
+      <h3>MSS/pMMR — O Desafio Central</h3>
+      <p>~95% dos CCR metastáticos são MSS. Até recentemente, sem opções de imunoterapia eficazes. Novas combinações (BOT/BAL, Cadonilimab) estão mudando este cenário.</p>
+    </div>
+    <div class="insight-card reveal reveal-delay-3">
+      <div class="insight-icon">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+      </div>
+      <h3>Metástase Laríngea Recorrente</h3>
+      <p>~15–20 casos documentados na literatura mundial. A recorrência após cirurgia + radioterapia sugere tropismo particular ou doença microscópica residual.</p>
+    </div>
+    <div class="insight-card reveal reveal-delay-4">
+      <div class="insight-icon">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+      </div>
+      <h3>Signatera Negativo + Recidiva</h3>
+      <p>ctDNA negativo em mai/2025 era bom sinal, mas a recidiva indica doença residual mínima abaixo do limite de detecção. Repetir agora é fundamental.</p>
+    </div>
+    <div class="insight-card reveal reveal-delay-5">
+      <div class="insight-icon">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+      </div>
+      <h3>Perfil Molecular Pendente (NGS)</h3>
+      <p>PRIORIDADE #1: painel genômico completo (KRAS, NRAS, BRAF, HER2, TMB, NTRK, RET, POLE) no tecido mais recente (SPA26-21747A1) para abrir portas terapêuticas.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ DARK BAND ═══════════ -->
+<section class="dark-band reveal" id="desafio">
+  <div class="section-number">O Desafio Central</div>
+  <h2>Metástase laríngea rara de CCR com resistência terapêutica</h2>
+  <p>A falha no controle local (recidiva após cirurgia + radioterapia) combinada com o status MSS/pMMR exige uma estratégia que integre terapia sistêmica de ponta com abordagem local de máxima precisão. A ciência oncológica avançou vertiginosamente nos últimos dois anos — e novas esperanças surgiram precisamente para este perfil de paciente.</p>
+</section>
+
+<!-- ═══════════ 05 — TERAPIAS ═══════════ -->
+<section class="section reveal" id="terapias">
+  <div class="section-number">05 — Fronteiras Terapêuticas</div>
+  <h2 class="section-title">Caminhos para a Cura Potencial</h2>
+  <div class="section-desc">Terapias de ponta mapeadas com rigor científico — organizadas por relevância e nível de evidência para o caso específico</div>
+
+  <!-- TERAPIA 01 — BOT/BAL -->
+  <div class="therapy-card reveal">
+    <div class="therapy-header">
+      <div class="therapy-priority top">Terapia 01 — Prioridade Máxima</div>
+      <h3>Botensilimab + Balstilimab</h3>
+      <div class="therapy-maker">Agenus — Anti-CTLA-4 Fc-enhanced + Anti-PD-1</div>
+    </div>
+    <div class="therapy-body">
+      <p>O maior avanço recente no tratamento do CCR MSS. O Botensilimab possui engenharia molecular que aumenta a ativação de células T efetoras e diminui a atividade de células T reguladoras, tornando o tumor "frio" visível e atacável pelo sistema imunológico. Esta combinação representa a primeira imunoterapia a demonstrar atividade clínica significativa e durável em tumores colorretais MSS.</p>
+      <div class="evidence-box">
+        <div class="evidence-label">Evidência-Chave — ESMO GI 2025</div>
+        <p>Em um subgrupo de pacientes <strong>sem metástases hepáticas ativas</strong> — perfil que se assemelha ao da Sra. Begueto — a taxa de resposta objetiva foi de <strong>20%</strong>, com <strong>3 respostas completas</strong>, <strong>50% de doença estável</strong> e <strong>69% de taxa de controle de doença</strong>. A duração mediana de resposta ultrapassou <strong>16 meses</strong>, a sobrevida global mediana foi de aproximadamente <strong>21 meses</strong> e a taxa de sobrevida em 2 anos foi de <strong>42%</strong>.</p>
+      </div>
+      <div class="stats-grid">
+        <div class="stat-cell"><div class="val">20%</div><div class="lbl">Taxa de Resposta Objetiva</div></div>
+        <div class="stat-cell"><div class="val">69%</div><div class="lbl">Controle de Doença</div></div>
+        <div class="stat-cell"><div class="val">~21m</div><div class="lbl">Sobrevida Global Mediana</div></div>
+        <div class="stat-cell"><div class="val">42%</div><div class="lbl">Sobrevida em 2 Anos</div></div>
+        <div class="stat-cell"><div class="val">&gt;16m</div><div class="lbl">Duração de Resposta</div></div>
+        <div class="stat-cell"><div class="val">3</div><div class="lbl">Respostas Completas</div></div>
+      </div>
+      <div class="callout">
+        <div class="callout-label">Recomendação</div>
+        <p>Esta é possivelmente a <strong>opção terapêutica sistêmica mais importante e promissora</strong>. A busca por acesso — seja via ensaio clínico (NCT07227636 recrutando; NCT05608044 ativo, não recrutando), importação para uso compassivo, ou tratamento na <strong>França</strong> (acesso compassivo reembolsado AAC desde set/2025 — programa nacional) — deve ser prioridade absoluta. FDA Fast Track designation concedido.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- TERAPIA 02 — Cadonilimab -->
+  <div class="therapy-card reveal">
+    <div class="therapy-header">
+      <div class="therapy-priority top">Terapia 02 — Biespecífico de Nova Geração</div>
+      <h3>Cadonilimab (AK104) + FOLFOXIRI + Bevacizumab</h3>
+      <div class="therapy-maker">Akeso Biopharma — Biespecífico PD-1/CTLA-4 + Quimioterapia + Anti-VEGF</div>
+    </div>
+    <div class="therapy-body">
+      <p>O Cadonilimab é um anticorpo biespecífico que bloqueia simultaneamente PD-1 e CTLA-4 em uma única molécula, com potencial sinérgico superior à combinação de dois anticorpos separados. Em combinação com FOLFOXIRI e Bevacizumab como <strong>1ª linha para CCR MSS metastático</strong>, os resultados são sem precedentes.</p>
+      <div class="evidence-box">
+        <div class="evidence-label">ASCO GI 2025 — Estudo SYLT-026 (Fase 2)</div>
+        <p><strong>ORR de 100%</strong> em pacientes com CCR pMMR/MSS metastático em 1ª linha (amostra pequena — estudo fase 2 inicial, necessita confirmação em estudos maiores). NCT05747716. <strong>Nota:</strong> a Sra. Begueto não fez tratamento sistêmico para doença metastática — isso pode ser considerado 1ª linha metastática, tornando este dado altamente relevante.</p>
+      </div>
+      <div class="callout-rosa callout">
+        <div class="callout-label">Nota de Cautela</div>
+        <p>ORR 100% é de amostra pequena em fase 2 inicial. Resultados promissores mas necessitam validação em estudos maiores. Fonte: Yin Y, et al. JCO 2026;44(2_suppl):121 e Frontiers in Oncology 2026 (review de 192 ensaios).</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- TERAPIA 03 — Ivonescimab -->
+  <div class="therapy-card reveal">
+    <div class="therapy-header">
+      <div class="therapy-priority top">Terapia 03 — Biespecífico PD-1/VEGF</div>
+      <h3>Ivonescimab (AK112) + FOLFOXIRI</h3>
+      <div class="therapy-maker">Akeso/Hengrui — Biespecífico PD-1/VEGF + Quimioterapia</div>
+    </div>
+    <div class="therapy-body">
+      <p>Outro biespecífico inovador que combina bloqueio de PD-1 com inibição de VEGF em uma molécula. Em combinação com FOLFOXIRI como 1ª linha para CCR MSS metastático, apresentou <strong>ORR de 81,8%</strong>. Abordagem dual que ataca tanto a evasão imune quanto a angiogênese tumoral.</p>
+      <div class="evidence-box">
+        <div class="evidence-label">Dados de Fase 2</div>
+        <p>ORR 81,8% em 1ª linha MSS CRC com FOLFOXIRI. Confirmado na review de Frontiers in Oncology 2026. Mesma nota de cautela: dados de fase 2 inicial, necessitam validação.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- TERAPIA 04 — SBRT -->
+  <div class="therapy-card reveal">
+    <div class="therapy-header">
+      <div class="therapy-priority top">Terapia 04 — Preservação de Órgão</div>
+      <h3>SBRT — Principal Alternativa à Laringectomia</h3>
+      <div class="therapy-maker">Radioterapia Estereotáxica Corporal — Doses altas em 3-5 sessões</div>
+    </div>
+    <div class="therapy-body">
+      <p>Com pMMR/MSS definitivo, imunoterapia neoadjuvante (antes da cirurgia) NÃO é viável. A SBRT se torna a <strong>principal alternativa não-cirúrgica</strong>. Funciona com doses altas de radiação em 3-5 sessões com precisão milimétrica. A lesão pediculada na cartilagem tireoide fornece referência anatômica estável para o planejamento.</p>
+      <div class="evidence-box">
+        <div class="evidence-label">SBRT + Imunoterapia (Efeito Abscopal)</div>
+        <p>A radiação pode causar a liberação de antígenos tumorais, tornando o tumor "visível" ao sistema imune MESMO em tumores MSS. Trials ativos na UCSF para cânceres GI metastáticos. A combinação com Botensilimab/Balstilimab seria particularmente elegante — radiação local "aquece" o microambiente tumoral, potencializando a resposta imune sistêmica.</p>
+      </div>
+      <p><strong>Outras opções de preservação:</strong></p>
+      <p><strong>Microcirurgia Transoral a Laser (TLM):</strong> A TLM com laser de CO2 pode ser usada para ressecções precisas de tumores laríngeos, incluindo recorrências após radioterapia. A literatura reporta caso similar (mulher 56 anos, metástase subglótica de CCR) tratado com sucesso via TLM.</p>
+      <p><strong>Terapia de Prótons:</strong> A re-irradiação com prótons, com sua propriedade física do "Pico de Bragg", permite entrega de altas doses conformadas ao tumor minimizando dose em tecidos já irradiados. MD Anderson é referência mundial.</p>
+      <p><strong>Laringectomia Parcial:</strong> A lesão pediculada na cartilagem tireoide pode possibilitar uma laringectomia parcial em vez de total — questão a ser discutida com cirurgião de cabeça e pescoço experiente.</p>
+    </div>
+  </div>
+
+  <!-- TERAPIA 05 — TILs -->
+  <div class="therapy-card reveal">
+    <div class="therapy-header">
+      <div class="therapy-priority">Terapia 05 — Terapia Celular</div>
+      <h3>TILs Selecionados + Pembrolizumab</h3>
+      <div class="therapy-maker">Terapia com Linfócitos Infiltrantes de Tumor — Funciona independente de MSI</div>
+    </div>
+    <div class="therapy-body">
+      <p>Linfócitos T são extraídos do próprio tumor da paciente, expandidos em laboratório (selecionando os mais reativos contra o tumor), e reinfundidos em grande quantidade. <strong>Funciona independente do status MSI</strong> — isso é crucial para tumores MSS como o da Sra. Begueto.</p>
+      <div class="evidence-box">
+        <div class="evidence-label">Nature Medicine — Abril 2025</div>
+        <p><strong>23,5% de resposta objetiva</strong> em cânceres gastrointestinais refratários. Acesso: NCI/NIH (Dr. Steven Rosenberg, NCT01174121 — <strong>custo coberto pelo trial</strong>) e MD Anderson. Necessário tecido fresco/congelado das cirurgias.</p>
+      </div>
+      <div class="callout">
+        <div class="callout-label">Ação Necessária</div>
+        <p>Confirmar se há tecido fresco/congelado das cirurgias de mai/2025 ou fev/2026. Se apenas bloco de parafina, futuras cirurgias devem incluir preservação de tecido fresco. O NCT01174121 no NCI/NIH cobre custos do tratamento.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- TERAPIA 06 — Vilastobart -->
+  <div class="therapy-card reveal">
+    <div class="therapy-header">
+      <div class="therapy-priority">Terapia 06 — Imunoterapia de Nova Geração</div>
+      <h3>Vilastobart/XTX101 + Atezolizumab</h3>
+      <div class="therapy-maker">Xilio Therapeutics — Anti-CTLA-4 tumor-ativado + Anti-PD-L1</div>
+    </div>
+    <div class="therapy-body">
+      <p>O Vilastobart é um anticorpo anti-CTLA-4 que é ativado seletivamente dentro do tumor, reduzindo a toxicidade sistêmica. Em combinação com Atezolizumab, os dados de Fase 2 (novembro 2025) mostraram taxa de resposta objetiva impressionante de <strong>40% em pacientes sem metástase hepática e com TMB plasmático alto</strong> (≥10 mutações/Mb). Estima-se que ~55% dos pacientes com CCR MSS tenham TMB plasmático alto.</p>
+      <div class="evidence-box">
+        <div class="evidence-label">Elegibilidade</div>
+        <p>Para determinar a elegibilidade, é necessário realizar um teste de <strong>TMB plasmático</strong> (via biópsia líquida). Se o resultado for alto, esta seria uma opção terapêutica com taxa de resposta excepcionalmente elevada de <strong>40%</strong>. NCT04896697 recrutando nos EUA.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- TERAPIA 07 — Muzastotug -->
+  <div class="therapy-card reveal">
+    <div class="therapy-header">
+      <div class="therapy-priority">Terapia 07 — Imunoterapia Emergente</div>
+      <h3>Muzastotug + Pembrolizumab</h3>
+      <div class="therapy-maker">Adagene — SAFEbody Anti-CTLA-4 + Anti-PD-1 (em combinação)</div>
+    </div>
+    <div class="therapy-body">
+      <p>Outro anticorpo anti-CTLA-4 de nova geração (tecnologia SAFEbody) que, <strong>em combinação com pembrolizumab</strong>, recebeu designação <strong>Fast Track do FDA</strong> em dezembro de 2025 para CCR MSS sem metástase hepática. Os dados de Fase 1b/2 estão sendo reportados no primeiro trimestre de 2026. Mais uma opção emergente a ser monitorada.</p>
+    </div>
+  </div>
+
+  <!-- TERAPIA 08 — IBI363 -->
+  <div class="therapy-card reveal">
+    <div class="therapy-header">
+      <div class="therapy-priority">Terapia 08 — Biespecífico</div>
+      <h3>IBI363 — Biespecífico PD-1/IL-2</h3>
+      <div class="therapy-maker">Innovent Biologics — Anticorpo biespecífico</div>
+    </div>
+    <div class="therapy-body">
+      <p>O IBI363 combina a inibição de PD-1 com a estimulação de IL-2, potencializando a resposta imune antitumoral. Em monoterapia e em combinação com bevacizumab, demonstrou resultados promissores em pacientes com CCR MSS (91,4% dos pacientes no estudo eram MSS/pMMR). Fase I em andamento.</p>
+    </div>
+  </div>
+
+  <!-- TERAPIA 09 — Vacinas -->
+  <div class="therapy-card reveal">
+    <div class="therapy-header">
+      <div class="therapy-priority">Terapia 09 — Vacinas Personalizadas</div>
+      <h3>GRANITE + NeoAg-VAX</h3>
+      <div class="therapy-maker">Gritstone Bio + MD Anderson — Vacinas de Neoantígenos para MSS</div>
+    </div>
+    <div class="therapy-body">
+      <p><strong>GRANITE (Gritstone Bio):</strong> Vacina individualizada baseada em neoantígenos do tumor, desenhada ESPECIFICAMENTE para MSS. O ensaio de Fase 2/3 (NCT05141721) mostrou melhora em sobrevida livre de progressão, especialmente em pacientes com menor carga de doença. Ideal após ressecção: previne novas metástases.</p>
+      <p><strong>NeoAg-VAX (MD Anderson):</strong> Vacina peptídica + pembrolizumab em Fase 1. Maior benefício em doença residual mínima — perfil que pode se aplicar à Sra. Begueto caso a lesão laríngea seja controlada localmente.</p>
+    </div>
+  </div>
+
+  <!-- TERAPIA 10 — IM96 CAR-T -->
+  <div class="therapy-card reveal">
+    <div class="therapy-header">
+      <div class="therapy-priority">Terapia 10 — CAR-T para CCR</div>
+      <h3>IM96 — Anti-GUCY2C CAR-T</h3>
+      <div class="therapy-maker">Peking University Cancer Hospital — CAR-T específico para CCR pMMR/MSS</div>
+    </div>
+    <div class="therapy-body">
+      <p>Terapia celular CAR-T direcionada ao antígeno GUCY2C, expresso em células colorretais. Especificamente desenvolvida para CCR pMMR/MSS.</p>
+      <div class="evidence-box">
+        <div class="evidence-label">Fase 1 — NCT05287165</div>
+        <p>ORR 26,3% (40% na dose DL3), DCR 73,7%, PFS mediana de 7 meses. Dados apresentados no ASCO 2024 (JCO 2024;42(16_suppl):2518).</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- TERAPIA 11 — NK -->
+  <div class="therapy-card reveal">
+    <div class="therapy-header">
+      <div class="therapy-priority">Terapia 11 — Terapia Celular</div>
+      <h3>Células NK + Cetuximab</h3>
+      <div class="therapy-maker">UCSF — Células Natural Killer + Anti-EGFR</div>
+    </div>
+    <div class="therapy-body">
+      <p>Células Natural Killer (NK) são guerreiros inatos do sistema imunológico que não dependem de reconhecimento de antígenos específicos. O trial WU-NK-101 na UCSF combina células NK expandidas com Cetuximab para CRC metastático. Abordagem inovadora que pode funcionar independente do perfil mutacional.</p>
+    </div>
+  </div>
+
+  <!-- TERAPIA 12 — FMT -->
+  <div class="therapy-card reveal">
+    <div class="therapy-header">
+      <div class="therapy-priority">Terapia 12 — Microbioma + Imunoterapia</div>
+      <h3>FMT + Tislelizumab + Fruquintinib (RENMIN-215)</h3>
+      <div class="therapy-maker">Zhejiang University — Transplante de Microbiota Fecal + Anti-PD-1 + TKI</div>
+    </div>
+    <div class="therapy-body">
+      <p>Primeira evidência de que a modulação do microbioma intestinal pode potencializar a imunoterapia em CCR MSS. Combinação tripla inovadora.</p>
+      <div class="evidence-box">
+        <div class="evidence-label">Fase 2 — ChiCTR2100046768</div>
+        <p>ORR 20%, DCR 95%, PFS mediana 9,6 meses, OS mediana 13,7 meses em CCR MSS refratário.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- TERAPIA 13 — CRISPR-TILs -->
+  <div class="therapy-card reveal">
+    <div class="therapy-header">
+      <div class="therapy-priority">Terapia 13 — Terapia Celular Avançada</div>
+      <h3>CRISPR-TILs</h3>
+      <div class="therapy-maker">Edição Genética de TILs — Desliga freio interno das células T</div>
+    </div>
+    <div class="therapy-body">
+      <p>Evolução dos TILs convencionais: utiliza edição genética CRISPR para desligar o "freio interno" (gene PD-1) dos linfócitos antes de reinfundi-los. Isso torna as células T mais persistentes e agressivas contra o tumor.</p>
+      <div class="evidence-box">
+        <div class="evidence-label">Lancet Oncology — 2025</div>
+        <p><strong>Resposta completa sustentada por mais de 21 meses</strong> em paciente com câncer colorretal (Lou et al., Lancet Oncology, Mai/2025). <strong>Nota importante:</strong> este resultado foi em paciente <strong>MSI-H, não MSS</strong>. O mecanismo de ação é inovador e está sendo expandido para MSS, mas a evidência direta em MSS ainda é limitada.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- TABELA DE TERAPIAS ADICIONAIS -->
+  <div style="margin-top:48px;" class="reveal">
+    <div class="section-number" style="margin-bottom:16px;">Outras Terapias em Investigação</div>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Terapia</th>
+            <th>Mecanismo</th>
+            <th>Fase</th>
+            <th>Dados-Chave</th>
+            <th>NCT / Registro</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Zanzalintinib (XL092)</strong></td>
+            <td>TKI (VEGFR2, MET, AXL)</td>
+            <td><span class="badge badge-dark">Fase 3</span></td>
+            <td>STELLAR-303: melhora em OS e PFS vs regorafenib</td>
+            <td>Exelixis</td>
+          </tr>
+          <tr>
+            <td><strong>Precemtabart tocentecan (M9140)</strong></td>
+            <td>ADC anti-CEACAM5</td>
+            <td><span class="badge badge-outline">Fase 1</span></td>
+            <td>mPFS 6,7m, ORR 15%</td>
+            <td>NCT05464030</td>
+          </tr>
+          <tr>
+            <td><strong>mRNA-4359 (Moderna)</strong></td>
+            <td>Vacina mRNA tumores sólidos</td>
+            <td><span class="badge badge-outline">Fase 1/2</span></td>
+            <td>Dana-Farber, UCSF</td>
+            <td>NCT05533697</td>
+          </tr>
+          <tr>
+            <td><strong>Sabatolimab + Spartalizumab</strong></td>
+            <td>Anti-TIM-3 + Anti-PD-1</td>
+            <td><span class="badge badge-outline">Fase 1</span></td>
+            <td>2 respostas parciais duráveis (12-27m) em CCR</td>
+            <td>NCT02608268</td>
+          </tr>
+          <tr>
+            <td><strong>Serplulimab + Beva + Quimio</strong></td>
+            <td>Anti-PD-1 + Anti-VEGF + Quimio</td>
+            <td><span class="badge badge-dark">Fase 3</span></td>
+            <td>ASTRUM-015 para MSS CRC</td>
+            <td>Henlius Biotech</td>
+          </tr>
+          <tr>
+            <td><strong>KEYNOTE-651</strong></td>
+            <td>Pembrolizumab + Quimio</td>
+            <td><span class="badge badge-dark">Fase 3</span></td>
+            <td>1ª linha para MSS</td>
+            <td>Merck</td>
+          </tr>
+          <tr>
+            <td><strong>Regorafenib/Fruquintinib + PD-1</strong></td>
+            <td>TKI antiangiogênico + IO</td>
+            <td><span class="badge badge-outline">Fase 2</span></td>
+            <td>Eficácia moderada, especialmente em metástase pulmonar</td>
+            <td>Múltiplos</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Terapias-alvo condicionais ao painel genômico -->
+  <div style="margin-top:48px;" class="reveal">
+    <div class="section-number" style="margin-bottom:16px;">Terapias-Alvo Condicionais ao Painel Genômico (NGS)</div>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Alteração Genômica</th>
+            <th>Terapia-Alvo</th>
+            <th>Evidência</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>KRAS G12C</strong></td>
+            <td>Adagrasib + Cetuximab</td>
+            <td>KRYSTAL-1: ORR ~46% em CCR</td>
+          </tr>
+          <tr>
+            <td><strong>BRAF V600E</strong></td>
+            <td>Encorafenib + Cetuximab</td>
+            <td>BREAKWATER: padrão de cuidado</td>
+          </tr>
+          <tr>
+            <td><strong>HER2 amplificado</strong></td>
+            <td>Trastuzumab Deruxtecan (T-DXd)</td>
+            <td>DESTINY-CRC02: ORR ~37%</td>
+          </tr>
+          <tr>
+            <td><strong>NTRK fusão</strong></td>
+            <td>Larotrectinib / Entrectinib</td>
+            <td>Aprovado: ORR ~75% pan-tumor</td>
+          </tr>
+          <tr>
+            <td><strong>RAS wild-type</strong></td>
+            <td>Cetuximab / Panitumumab</td>
+            <td>Padrão de cuidado em CCR RAS-wt</td>
+          </tr>
+          <tr>
+            <td><strong>Qualquer perfil</strong></td>
+            <td>Fruquintinib (Fruzaqla)</td>
+            <td>FRESCO-2: aprovado para CCR refratário</td>
+          </tr>
+          <tr>
+            <td><strong>TMB alto</strong></td>
+            <td>Vilastobart + Atezolizumab</td>
+            <td>ORR 40% (sem metástase hepática)</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ═══════════ 06 — PAINEL GENÔMICO ═══════════ -->
+<section class="section reveal" id="genomico">
+  <div class="section-number">06 — Painel Genômico Pendente</div>
+  <h2 class="section-title">O Mapa Molecular do Tumor</h2>
+  <div class="section-desc">O perfil molecular completo é a chave que abre (ou fecha) portas terapêuticas. PRIORIDADE #1</div>
+
+  <div class="callout-rosa callout reveal">
+    <div class="callout-label">Ação Urgente</div>
+    <p>Solicitar painel genômico completo (NGS) no bloco <strong>SPA26-21747A1</strong> (tecido mais recente, fev/2026). Opção recomendada: <strong>FoundationOne CDx</strong> (324 genes) via Roche Brasil. Alternativas: Tempus xT, MSK-IMPACT.</p>
+  </div>
+
+  <div class="table-wrap reveal">
+    <table>
+      <thead>
+        <tr>
+          <th>Gene/Biomarcador</th>
+          <th>Status Atual</th>
+          <th>Impacto Terapêutico</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>KRAS</strong></td>
+          <td><span class="badge badge-rosa">Pendente NGS</span></td>
+          <td>Se G12C → Adagrasib + Cetuximab. Se mutado → exclui anti-EGFR</td>
+        </tr>
+        <tr>
+          <td><strong>NRAS</strong></td>
+          <td><span class="badge badge-rosa">Pendente NGS</span></td>
+          <td>Se mutado → exclui anti-EGFR</td>
+        </tr>
+        <tr>
+          <td><strong>BRAF</strong></td>
+          <td><span class="badge badge-rosa">Pendente NGS</span></td>
+          <td>Se V600E → Encorafenib + Cetuximab (BREAKWATER)</td>
+        </tr>
+        <tr>
+          <td><strong>HER2</strong></td>
+          <td><span class="badge badge-rosa">Pendente NGS</span></td>
+          <td>Se amplificado → Trastuzumab Deruxtecan</td>
+        </tr>
+        <tr>
+          <td><strong>TMB</strong></td>
+          <td><span class="badge badge-rosa">Pendente NGS</span></td>
+          <td>Se alto → Vilastobart + Atezolizumab (ORR 40%)</td>
+        </tr>
+        <tr>
+          <td><strong>NTRK fusão</strong></td>
+          <td><span class="badge badge-rosa">Pendente NGS</span></td>
+          <td>Se presente → Larotrectinib/Entrectinib (ORR ~75%)</td>
+        </tr>
+        <tr>
+          <td><strong>RET fusão</strong></td>
+          <td><span class="badge badge-rosa">Pendente NGS</span></td>
+          <td>Se presente → Selpercatinib</td>
+        </tr>
+        <tr>
+          <td><strong>POLE/POLD1</strong></td>
+          <td><span class="badge badge-rosa">Pendente NGS</span></td>
+          <td>Se mutado → alta TMB → imunoterapia pode funcionar mesmo em pMMR</td>
+        </tr>
+        <tr>
+          <td><strong>MMR/MSI</strong></td>
+          <td><span class="badge badge-dark">pMMR/MSS (3x confirmado)</span></td>
+          <td>Confirmado por IHQ em 3 amostras. Anti-PD-1 isolado não indicado</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ═══════════ 07 — ROTEIRO ESTRATÉGICO ═══════════ -->
+<section class="section reveal" id="roteiro">
+  <div class="section-number">07 — Roteiro Estratégico</div>
+  <h2 class="section-title">Plano de Ação</h2>
+  <div class="section-desc">Ações concretas organizadas por prioridade e urgência</div>
+
+  <div class="action-grid">
+    <div class="action-card reveal reveal-delay-1">
+      <div class="action-icon">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+      </div>
+      <h4>1. Painel Genômico (NGS)</h4>
+      <p>Solicitar FoundationOne CDx no bloco SPA26-21747A1. KRAS, NRAS, BRAF, HER2, TMB, NTRK, RET, POLE. Prazo: imediato.</p>
+    </div>
+    <div class="action-card reveal reveal-delay-2">
+      <div class="action-icon">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+      </div>
+      <h4>2. Reestadiamento Atualizado</h4>
+      <p>PET/CT atualizado (último é de mai/2025). TC/RM pescoço/laringotraqueal. Repetir Signatera (ctDNA).</p>
+    </div>
+    <div class="action-card reveal reveal-delay-3">
+      <div class="action-icon">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+      </div>
+      <h4>3. Buscar Acesso a BOT/BAL</h4>
+      <p>Contatar Agenus para ensaio clínico ou uso compassivo. Explorar AAC na França. NCT07227636 recrutando.</p>
+    </div>
+    <div class="action-card reveal reveal-delay-4">
+      <div class="action-icon">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
+      </div>
+      <h4>4. Segundas Opiniões</h4>
+      <p>MD Anderson, MSK, NCI/NIH (TILs), Institut Gustave Roussy. Enviar caso para tumor board internacional.</p>
+    </div>
+    <div class="action-card reveal reveal-delay-5">
+      <div class="action-icon">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+      </div>
+      <h4>5. Preservação de Tecido</h4>
+      <p>Garantir que tecido fresco/congelado esteja disponível para TILs e futuras análises moleculares.</p>
+    </div>
+    <div class="action-card reveal">
+      <div class="action-icon">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="21" x2="9" y2="9"/></svg>
+      </div>
+      <h4>6. Avaliar Cadonilimab/Ivonescimab</h4>
+      <p>Explorar acesso a biespecíficos chineses via ensaios ou importação. Dados de 1ª linha são altamente relevantes.</p>
+    </div>
+  </div>
+
+  <!-- Ensaios Clínicos -->
+  <div style="margin-top:48px;" class="reveal">
+    <div class="section-number" style="margin-bottom:16px;">Ensaios Clínicos Mapeados</div>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>NCT / Registro</th>
+            <th>Terapia</th>
+            <th>Fase</th>
+            <th>Status</th>
+            <th>Local</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>NCT07227636</strong></td>
+            <td>BOT/BAL Fase 2</td>
+            <td>2</td>
+            <td><span class="badge badge-dark">Recrutando</span></td>
+            <td>EUA</td>
+          </tr>
+          <tr>
+            <td><strong>NCT05608044</strong></td>
+            <td>BOT/BAL ACTIVATE-CRC</td>
+            <td>2</td>
+            <td><span class="badge badge-gray">Ativo, não recrutando</span></td>
+            <td>EUA</td>
+          </tr>
+          <tr>
+            <td><strong>NCT05141721</strong></td>
+            <td>GRANITE (vacina neoantígenos)</td>
+            <td>2/3</td>
+            <td><span class="badge badge-dark">Ativo</span></td>
+            <td>EUA</td>
+          </tr>
+          <tr>
+            <td><strong>NCT04896697</strong></td>
+            <td>Vilastobart + Atezolizumab</td>
+            <td>2</td>
+            <td><span class="badge badge-dark">Recrutando</span></td>
+            <td>EUA</td>
+          </tr>
+          <tr>
+            <td><strong>NCT01174121</strong></td>
+            <td>TILs + Pembrolizumab (NCI/NIH)</td>
+            <td>2</td>
+            <td><span class="badge badge-dark">Recrutando</span></td>
+            <td>Bethesda, MD</td>
+          </tr>
+          <tr>
+            <td><strong>NCT05747716</strong></td>
+            <td>Cadonilimab + FOLFOXIRI + Beva</td>
+            <td>2</td>
+            <td><span class="badge badge-dark">Recrutando</span></td>
+            <td>China</td>
+          </tr>
+          <tr>
+            <td><strong>NCT05287165</strong></td>
+            <td>IM96 CAR-T anti-GUCY2C</td>
+            <td>1</td>
+            <td><span class="badge badge-dark">Recrutando</span></td>
+            <td>China</td>
+          </tr>
+          <tr>
+            <td><strong>NCT05533697</strong></td>
+            <td>mRNA-4359 (Moderna)</td>
+            <td>1/2</td>
+            <td><span class="badge badge-dark">Recrutando</span></td>
+            <td>EUA</td>
+          </tr>
+          <tr>
+            <td><strong>NCT02608268</strong></td>
+            <td>Sabatolimab + Spartalizumab</td>
+            <td>1</td>
+            <td><span class="badge badge-outline">Ativo</span></td>
+            <td>Múltiplos</td>
+          </tr>
+          <tr>
+            <td><strong>WU-NK-101</strong></td>
+            <td>NK + Cetuximab</td>
+            <td>1</td>
+            <td><span class="badge badge-dark">Recrutando</span></td>
+            <td>UCSF</td>
+          </tr>
+          <tr>
+            <td><strong>ChiCTR2100046768</strong></td>
+            <td>FMT + Tislelizumab + Fruquintinib</td>
+            <td>2</td>
+            <td><span class="badge badge-outline">Ativo</span></td>
+            <td>China</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Decisão sobre a laringe -->
+  <div class="callout reveal" style="margin-top:24px;">
+    <div class="callout-label">Decisão sobre a Laringe — Após Resultados</div>
+    <p><strong>Opção A:</strong> SBRT focal ± terapia sistêmica (preserva laringe).<br>
+    <strong>Opção B:</strong> Laringectomia parcial + terapia sistêmica.<br>
+    <strong>Opção C:</strong> Laringectomia total + trial adjuvante (vacina GRANITE ou TILs).<br>
+    <strong>NOTA:</strong> Imunoterapia neoadjuvante NÃO é opção (pMMR/MSS definitivo). A decisão deve ser multidisciplinar (cabeça-pescoço + oncologia + radio-oncologia).</p>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ═══════════ 08 — PERGUNTAS PARA A EQUIPE ═══════════ -->
+<section class="section section-sm reveal">
+  <div class="section-number">08 — Questões para a Consulta Médica</div>
+  <h2 class="section-title">Perguntas-Chave</h2>
+  <div class="section-desc">Questões estratégicas para discutir com a equipe médica, organizadas por tema</div>
+
+  <div style="margin-bottom:32px;" class="reveal">
+    <div class="section-number" style="margin-bottom:16px;">Sobre Tratamento Sistêmico</div>
+    <div class="question-list">
+      <div class="question-item">
+        <div class="question-num">01</div>
+        <div class="question-text">O bloco SPA26-21747A1 pode ser enviado para painel genômico completo (NGS)? KRAS, NRAS, BRAF, HER2, TMB, NTRK, RET, POLE. Qual laboratório?</div>
+      </div>
+      <div class="question-item">
+        <div class="question-num">02</div>
+        <div class="question-text">Considerando os dados recentes e robustos da combinação Botensilimab/Balstilimab em CCR MSS, vocês consideram esta uma opção viável? Como podemos buscar acesso, seja via ensaio clínico (nacional ou internacional) ou importação para uso compassivo?</div>
+      </div>
+      <div class="question-item">
+        <div class="question-num">03</div>
+        <div class="question-text">Estamos dispostos a buscar tratamento em centros de referência no exterior. Vocês poderiam nos auxiliar no contato com instituições que lideram os ensaios com Botensilimab ou vacinas de neoantígenos?</div>
+      </div>
+      <div class="question-item">
+        <div class="question-num">04</div>
+        <div class="question-text">O tumor foi testado para HER2, c-Met ou TMB? Se não, podemos solicitar estes testes para explorar outras vias terapêuticas?</div>
+      </div>
+      <div class="question-item">
+        <div class="question-num">05</div>
+        <div class="question-text">Há tecido fresco/congelado das cirurgias de mai/2025 ou fev/2026? Isso seria relevante para terapia com TILs (NCT01174121 no NCI/NIH, custo coberto pelo trial).</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="reveal">
+    <div class="section-number" style="margin-bottom:16px;">Sobre Tratamento Local</div>
+    <div class="question-list">
+      <div class="question-item">
+        <div class="question-num">06</div>
+        <div class="question-text">Sabendo que o tumor é definitivamente pMMR/MSS, a SBRT focal na subglote seria alternativa viável à laringectomia?</div>
+      </div>
+      <div class="question-item">
+        <div class="question-num">07</div>
+        <div class="question-text">A lesão é pediculada na cartilagem tireoide. Isso possibilita laringectomia PARCIAL em vez de total?</div>
+      </div>
+      <div class="question-item">
+        <div class="question-num">08</div>
+        <div class="question-text">Qual a opinião sobre a viabilidade de uma microcirurgia transoral a laser (TLM) para esta lesão, visando a preservação da laringe?</div>
+      </div>
+      <div class="question-item">
+        <div class="question-num">09</div>
+        <div class="question-text">A re-irradiação com Terapia de Prótons seria uma alternativa à laringectomia total neste caso? Qual o centro de referência mais próximo para esta avaliação?</div>
+      </div>
+      <div class="question-item">
+        <div class="question-num">10</div>
+        <div class="question-text">Se uma terapia sistêmica eficaz for iniciada, isso mudaria a indicação ou o timing da abordagem cirúrgica local? A equipe concorda que a discussão deve ser multidisciplinar (cabeça-pescoço + oncologia + radio-oncologia)?</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ═══════════ 09 — CENTROS DE REFERÊNCIA ═══════════ -->
+<section class="section reveal" id="centros">
+  <div class="section-number">09 — Centros de Referência</div>
+  <h2 class="section-title">Onde Buscar Tratamento</h2>
+  <div class="section-desc">Centros de excelência com expertise em oncologia colorretal avançada, ensaios clínicos e terapias de ponta</div>
+
+  <div class="center-grid">
+    <div class="center-card reveal reveal-delay-1">
+      <div class="center-icon">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M3 21h18M3 7v1a3 3 0 006 0V7m0 1a3 3 0 006 0V7m0 1a3 3 0 006 0V7H3l2-4h14l2 4"/></svg>
+      </div>
+      <div>
+        <h4>MD Anderson Cancer Center</h4>
+        <div class="loc">Houston, TX, EUA</div>
+        <div class="desc">Líder mundial em oncologia, terapia de prótons, ensaios clínicos, NeoAg-VAX</div>
+      </div>
+    </div>
+    <div class="center-card reveal reveal-delay-2">
+      <div class="center-icon">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M3 21h18M3 7v1a3 3 0 006 0V7m0 1a3 3 0 006 0V7m0 1a3 3 0 006 0V7H3l2-4h14l2 4"/></svg>
+      </div>
+      <div>
+        <h4>Memorial Sloan Kettering Cancer Center</h4>
+        <div class="loc">Nova York, NY, EUA</div>
+        <div class="desc">Referência em CCR, ensaios com BOT/BAL, programa internacional de pacientes</div>
+      </div>
+    </div>
+    <div class="center-card reveal reveal-delay-3">
+      <div class="center-icon">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M3 21h18M3 7v1a3 3 0 006 0V7m0 1a3 3 0 006 0V7m0 1a3 3 0 006 0V7H3l2-4h14l2 4"/></svg>
+      </div>
+      <div>
+        <h4>NCI/NIH — National Cancer Institute</h4>
+        <div class="loc">Bethesda, MD, EUA</div>
+        <div class="desc">TILs (Dr. Rosenberg, NCT01174121) — custo coberto pelo trial</div>
+      </div>
+    </div>
+    <div class="center-card reveal reveal-delay-4">
+      <div class="center-icon">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M3 21h18M3 7v1a3 3 0 006 0V7m0 1a3 3 0 006 0V7m0 1a3 3 0 006 0V7H3l2-4h14l2 4"/></svg>
+      </div>
+      <div>
+        <h4>Institut Gustave Roussy</h4>
+        <div class="loc">Villejuif, França</div>
+        <div class="desc">Acesso compassivo BOT/BAL (AAC — programa nacional francês), líder europeu em oncologia</div>
+      </div>
+    </div>
+    <div class="center-card reveal reveal-delay-5">
+      <div class="center-icon">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M3 21h18M3 7v1a3 3 0 006 0V7m0 1a3 3 0 006 0V7m0 1a3 3 0 006 0V7H3l2-4h14l2 4"/></svg>
+      </div>
+      <div>
+        <h4>UCSF Helen Diller Cancer Center</h4>
+        <div class="loc">São Francisco, CA, EUA</div>
+        <div class="desc">Trials SBRT + imunoterapia para GI, Células NK (WU-NK-101)</div>
+      </div>
+    </div>
+    <div class="center-card reveal">
+      <div class="center-icon">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M3 21h18M3 7v1a3 3 0 006 0V7m0 1a3 3 0 006 0V7m0 1a3 3 0 006 0V7H3l2-4h14l2 4"/></svg>
+      </div>
+      <div>
+        <h4>Hospital Sírio-Libanês</h4>
+        <div class="loc">São Paulo, Brasil</div>
+        <div class="desc">Centro de oncologia de referência no Brasil, possível ponte para ensaios internacionais</div>
+      </div>
+    </div>
+    <div class="center-card reveal">
+      <div class="center-icon">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M3 21h18M3 7v1a3 3 0 006 0V7m0 1a3 3 0 006 0V7m0 1a3 3 0 006 0V7H3l2-4h14l2 4"/></svg>
+      </div>
+      <div>
+        <h4>A.C. Camargo Cancer Center</h4>
+        <div class="loc">São Paulo, Brasil</div>
+        <div class="desc">Centro especializado em câncer, equipe multidisciplinar, tumor board</div>
+      </div>
+    </div>
+    <div class="center-card reveal">
+      <div class="center-icon">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M3 21h18M3 7v1a3 3 0 006 0V7m0 1a3 3 0 006 0V7m0 1a3 3 0 006 0V7H3l2-4h14l2 4"/></svg>
+      </div>
+      <div>
+        <h4>Hospital Israelita Albert Einstein</h4>
+        <div class="loc">São Paulo, Brasil</div>
+        <div class="desc">Programa de oncologia avançada, genômica, ensaios clínicos</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ═══════════ 10 — EQUIPE MÉDICA ═══════════ -->
+<section class="section reveal">
+  <div class="section-number">10 — Equipe Médica</div>
+  <h2 class="section-title">Profissionais Envolvidos</h2>
+  <div class="section-desc">Médicos que acompanham o caso, com suas funções e registros profissionais</div>
+
+  <div class="team-grid">
+    <div class="team-card reveal">
+      <h4>Dr. Guilherme Cutait de Castro Cotti</h4>
+      <div class="role">Cirurgia primária + revisão Sírio-Libanês</div>
+      <div class="crm">Sírio-Libanês</div>
+    </div>
+    <div class="team-card reveal">
+      <h4>Dra. Marianne de Castro Gonçalves</h4>
+      <div class="role">Patologista — revisão primário + MMR + congelação 1ª laríngea</div>
+      <div class="crm">CRM/SP 141957</div>
+    </div>
+    <div class="team-card reveal">
+      <h4>Dra. Maria Ignez F. M. Braghiroli</h4>
+      <div class="role">Oncologista — PET/CTs e acompanhamento</div>
+      <div class="crm">VNS (Rede D'Or)</div>
+    </div>
+    <div class="team-card reveal">
+      <h4>Dr. Carlos Braghini</h4>
+      <div class="role">Biópsia pulmonar (out/2022)</div>
+      <div class="crm">CRM/RJ 5235309</div>
+    </div>
+    <div class="team-card reveal">
+      <h4>Dr. Dorival de Carlucci Junior</h4>
+      <div class="role">Cirurgia 1ª lesão laríngea (mai/2025)</div>
+      <div class="crm">CRM/SP 78603 — VNS</div>
+    </div>
+    <div class="team-card reveal">
+      <h4>Dr. Paulo Rogério Scordamaglio</h4>
+      <div class="role">Remoção endoscópica 2ª subglótica (fev/2026)</div>
+      <div class="crm">CRM/SP 91002 — VNS</div>
+    </div>
+    <div class="team-card reveal">
+      <h4>Dr. Fernando Augusto Soares</h4>
+      <div class="role">Responsável técnico anatomia patológica</div>
+      <div class="crm">CRM/SP 40110 — VNS</div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ CONCLUSÃO ═══════════ -->
+<section class="conclusion reveal">
+  <div class="conclusion-inner">
+    <div class="section-number" style="color:rgba(255,255,255,0.3);">11 — Conclusão</div>
+    <h2>A janela de oportunidade para agir é agora</h2>
+    <p>O caso da Sra. Silmara de Fátima Poli Begueto é complexo, desafiador e raro. A recomendação de laringectomia total é uma abordagem compreensível dentro dos paradigmas convencionais de tratamento para uma doença localmente recorrente e resistente. No entanto, <strong>a ciência oncológica avançou vertiginosamente nos últimos dois anos</strong>, e novas esperanças surgiram precisamente para casos como o dela: tumores colorretais MSS metastáticos.</p>
+    <p>A estratégia que oferece a maior chance de cura ou de controle a longo prazo com qualidade de vida não reside em uma única modalidade, mas sim na <strong>integração inteligente de uma terapia sistêmica de ponta com uma abordagem local de máxima precisão e mínima morbidade</strong>. A combinação Botensilimab/Balstilimab representa a maior revolução no tratamento de CCR MSS em décadas, e o acesso a esta terapia deve ser perseguido com máxima urgência. Os biespecíficos chineses (Cadonilimab, Ivonescimab) apresentam dados impressionantes em 1ª linha que são altamente relevantes para este caso.</p>
+    <p>A prioridade máxima deve ser a exploração agressiva do acesso à imunoterapia de nova geração e a obtenção de segundas opiniões qualificadas sobre as alternativas de preservação da laringe. O padrão oligometastático sequencial — com PET/CT limpo entre as metástases — é um fator favorável que deve ser explorado.</p>
+    <p style="color:var(--rosa);font-weight:600;margin-top:32px;">O caminho é árduo, mas a fronteira da ciência oferece possibilidades reais que precisam ser perseguidas com urgência e determinação</p>
+  </div>
+</section>
+
+<!-- ═══════════ REFERÊNCIAS ═══════════ -->
+<section class="references">
+  <div class="references-inner">
+    <h3>Referências Científicas</h3>
+    <div class="ref-item">[1] Aljariri, A. A., et al. (2023). Metastatic sigmoid adenocarcinoma to the larynx: A case report and review of the literature. <em>Clinical Case Reports</em>, 11(3), e6942. <a href="https://onlinelibrary.wiley.com/doi/10.1002/ccr3.6942" target="_blank">Wiley Online Library</a></div>
+    <div class="ref-item">[2] Koutsouveli, N. A., & Pikros, E. P. (2016). Subglottic metastasis from rectal adenocarcinoma: a case report. <em>Journal of Medical Case Reports</em>, 10, 24. <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC5244016/" target="_blank">PMC</a></div>
+    <div class="ref-item">[3] Fight Colorectal Cancer. (2025). ESMO GI 2025: Botensilimab/Balstilimab Combination Shows Promise in MSS CRC. <a href="https://fightcolorectalcancer.org/esmo-gi-2025-bot-bal/" target="_blank">fightcolorectalcancer.org</a></div>
+    <div class="ref-item">[4] Pant, S., et al. (2024). Durable responses and long-term survival with botensilimab plus balstilimab in metastatic, heavily pre-treated microsatellite stable colorectal cancer. <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC9909257/" target="_blank">PMC</a></div>
+    <div class="ref-item">[5] Palmer, A. C., et al. (2024). Individualized neoantigen vaccine GRANITE in MSS CRC. <em>Nature Medicine</em>. <a href="https://www.nature.com/" target="_blank">Nature</a></div>
+    <div class="ref-item">[6] Gritstone bio. (2024). Interim Phase 2 Data for GRANITE. <a href="https://www.biospace.com/" target="_blank">BioSpace</a></div>
+    <div class="ref-item">[7] Roedel, R. M., et al. (2010). Transoral laser microsurgery for recurrence after primary radiotherapy. <em>Auris Nasus Larynx</em>, 37(3), 354-359. <a href="https://www.sciencedirect.com/" target="_blank">ScienceDirect</a></div>
+    <div class="ref-item">[8] Piazza, C., et al. (2021). Salvage CO2 transoral laser microsurgery for laryngeal cancer: ELS consensus statement. <em>Eur Arch Otorhinolaryngol</em>, 278(11), 4169-4180. <a href="https://link.springer.com/" target="_blank">Springer</a></div>
+    <div class="ref-item">[9] MD Anderson Cancer Center. Proton Therapy for Head and Neck Cancers. <a href="https://www.mdanderson.org/" target="_blank">mdanderson.org</a></div>
+    <div class="ref-item">[10] Xilio Therapeutics. (2025). Late-Breaking Phase 2 Data for Vilastobart in MSS mCRC with High Plasma TMB. NCT04896697. <a href="https://www.xiliotx.com/" target="_blank">Xilio IR</a></div>
+    <div class="ref-item">[11] Aljariri, A. A., et al. (2023). Review of all reported cases of laryngeal metastasis from colorectal cancer (~15-20 cases). <em>Clinical Case Reports</em>, 11(3), Table 1. <a href="https://onlinelibrary.wiley.com/" target="_blank">Wiley Online Library</a></div>
+    <div class="ref-item">[12] Yokoyama, et al. (2023). Optimizing Treatment Strategy for Oligometastases/Oligo-Recurrence of Colorectal Cancer. <em>Cancers</em>, 16(1), 142. <a href="https://pmc.ncbi.nlm.nih.gov/" target="_blank">PMC</a></div>
+    <div class="ref-item">[13] Nature Medicine. (2025). TIL therapy in gastrointestinal cancers: 23.5% ORR independent of MSI status. <em>Nature Medicine</em>, Apr 2025.</div>
+    <div class="ref-item">[14] Lou, Y., et al. (2025). CRISPR-edited TILs achieve complete response >21 months in CRC MSI-H. <em>Lancet Oncology</em>, May 2025.</div>
+    <div class="ref-item">[15] ClinicalTrials.gov. NCT05608044, NCT07227636, NCT05141721, NCT04896697, NCT01174121, NCT05747716, NCT05287165, NCT05533697, NCT02608268. Acessados em fev/2026.</div>
+    <div class="ref-item">[16] Yin, Y., et al. (2026). Cadonilimab combined with FOLFIRINOX and bevacizumab as first-line treatment for MSS/pMMR mCRC. <em>J Clin Oncol</em>, 44(2_suppl), 121. <a href="https://ascopubs.org/" target="_blank">ASCO Pubs</a></div>
+    <div class="ref-item">[17] Frontiers in Oncology. (2026). Clinical trials of bispecific antibody therapy for colorectal cancer: a review of 192 trials. <em>Front. Oncol.</em>, 16. doi: 10.3389/fonc.2026.1758251. <a href="https://www.frontiersin.org/" target="_blank">Frontiers</a></div>
+    <div class="ref-item">[18] ASCO 2024. IM96 (anti-GUCY2C CAR-T) Phase 1 in pMMR/MSS CRC. <em>J Clin Oncol</em>, 42(16_suppl), 2518. <a href="https://ascopubs.org/" target="_blank">ASCO Pubs</a></div>
+    <div class="ref-item">[19] Estudo RENMIN-215. FMT + Tislelizumab + Fruquintinib em CCR MSS refratário. Registro: ChiCTR2100046768. <a href="https://www.sciencedirect.com/" target="_blank">ScienceDirect</a></div>
+    <div class="ref-item">[20] Moderna. mRNA-4359 Phase 1/2 Trial. NCT05533697. <a href="https://clinicaltrials.gov/study/NCT05533697" target="_blank">ClinicalTrials.gov</a></div>
+  </div>
+</section>
+
+<!-- ═══════════ FOOTER ═══════════ -->
+<footer class="footer">
+  <p>Feito para a Família Ovall</p>
+  <p style="margin-top:8px;">Este relatório é uma análise de consultoria baseada em inteligência artificial e pesquisa científica. Ele não substitui o julgamento clínico de médicos especialistas. Todas as decisões terapêuticas devem ser tomadas em conjunto com a equipe médica assistente, considerando as particularidades individuais da paciente.</p>
+  <div class="date">OncoSil v3.0 — 20 de Fevereiro de 2026 — Consolidado com varredura global de 10+ frentes de pesquisa</div>
+</footer>
+
+<!-- ═══════════ JAVASCRIPT ═══════════ -->
+<script>
+// Intersection Observer for reveal animations
+const observerOptions = {
+  root: null,
+  rootMargin: '0px 0px -60px 0px',
+  threshold: 0.1
+};
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+    }
+  });
+}, observerOptions);
+
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+// Navbar scroll effect
+const nav = document.getElementById('mainNav');
+let lastScroll = 0;
+
+window.addEventListener('scroll', () => {
+  const currentScroll = window.pageYOffset;
+  if (currentScroll > 60) {
+    nav.classList.add('scrolled');
+  } else {
+    nav.classList.remove('scrolled');
+  }
+  lastScroll = currentScroll;
+}, { passive: true });
+
+// Active nav link tracking
+const sections = document.querySelectorAll('section[id]');
+const navLinks = document.querySelectorAll('.nav a');
+
+const sectionObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      const id = entry.target.getAttribute('id');
+      navLinks.forEach(link => {
+        link.classList.remove('active');
+        if (link.getAttribute('href') === '#' + id) {
+          link.classList.add('active');
+        }
+      });
+    }
+  });
+}, { rootMargin: '-30% 0px -70% 0px' });
+
+sections.forEach(section => sectionObserver.observe(section));
+
+// Subtle parallax for hero (no opacity fade to avoid blank space)
+window.addEventListener('scroll', () => {
+  const scrolled = window.pageYOffset;
+  const hero = document.querySelector('.hero');
+  if (hero && scrolled < window.innerHeight) {
+    const children = hero.querySelectorAll('.hero-logo, .hero-eyebrow, h1, .hero-sub, .hero-stats, .scroll-indicator');
+    children.forEach(child => {
+      child.style.transform = `translateY(${scrolled * 0.08}px)`;
+    });
+  }
+}, { passive: true });
+
+// Counter animation for hero stats
+const statValues = document.querySelectorAll('.hero-stat-value');
+const counterObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.style.animation = 'countUp 0.6s var(--spring) forwards';
+      counterObserver.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.5 });
+
+statValues.forEach(el => counterObserver.observe(el));
+
+// Smooth scroll for nav links
+document.querySelectorAll('.nav a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener('click', function(e) {
+    e.preventDefault();
+    const target = document.querySelector(this.getAttribute('href'));
+    if (target) {
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  });
+});
+</script>
+
+</body>
+</html>
