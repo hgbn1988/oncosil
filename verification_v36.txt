@@ -1,0 +1,16 @@
+Verification v3.6 - 20/02/2026
+
+The markdown extraction from the live site confirms ALL content is present in the HTML:
+
+1. NAV BAR: Now includes Equipe link - CONFIRMED (Histórico, Riscos, Desafio, Terapias, Genômico, Roteiro, Equipe, Centros)
+2. TERAPIAS section (id="terapias"): Present with "05 — Fronteiras Terapêuticas" heading and therapy cards
+3. EQUIPE section (id="equipe"): Now has proper id attribute for navigation
+4. All 14 sections render correctly
+5. All section/div tags balanced (14/14 sections, 442/442 divs)
+
+The issue Hugo reported was likely:
+- The Equipe section was missing id="equipe" so clicking the nav card didn't scroll to it
+- The nav bar didn't have an "Equipe" link
+- Both are now fixed
+
+Content is all there - the reveal animation (IntersectionObserver) shows elements as you scroll to them.

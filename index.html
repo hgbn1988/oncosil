@@ -221,7 +221,7 @@ body {
 .hero::before {
   content: '';
   position: absolute;
-  inset: -50%;
+  inset: 0;
   background:
     radial-gradient(ellipse 600px 400px at 25% 30%, var(--rosa-subtle) 0%, transparent 70%),
     radial-gradient(ellipse 500px 500px at 75% 60%, rgba(0,0,0,0.015) 0%, transparent 70%),
@@ -1253,28 +1253,56 @@ td strong { color: var(--gray-900); }
 /* ─── RESPONSIVE ─── */
 @media (max-width: 768px) {
   .nav { padding: 6px 10px 6px 14px; gap: 2px; top: 8px; }
-
   .nav-brand { font-size: 0.6rem; margin-right: 4px; }
   .nav a { font-size: 0.6rem; padding: 5px 7px; }
-  .hero { padding: 120px 20px 80px; }
-  .hero-logo-text { font-size: 2rem; margin-bottom: 18px; }
+  .hero { padding: 100px 20px 40px; min-height: auto; }
+  .hero-logo-text { font-size: 1.8rem; margin-bottom: 12px; }
+  .hero h1 { font-size: 1.6rem; margin-bottom: 14px; }
+  .hero-sub { font-size: 0.9rem; margin-bottom: 20px; }
   .platform-grid { grid-template-columns: 1fr; max-width: 100%; gap: 10px; }
-  .platform-status { font-size: 0.65rem; padding: 8px 16px; }
-  .hero-warm { max-width: 100%; }
+  .platform-status { font-size: 0.65rem; padding: 8px 16px; margin-bottom: 28px; }
+  .hero-warm { max-width: 100%; margin-bottom: 24px; }
   .hero-stats { flex-direction: column; border-radius: var(--radius-md); }
-  .hero-stat { padding: 20px 28px; }
-  .section { padding: 80px 20px; }
-  .dark-band { padding: 80px 20px; }
-  .therapy-header, .therapy-body { padding-left: 24px; padding-right: 24px; }
-  .stats-grid { grid-template-columns: repeat(3, 1fr); }
+  .hero-stat { padding: 16px 24px; }
+  .hero-stat-value { font-size: 1.5rem; }
+  .scroll-indicator { display: none; }
+  .section { padding: 56px 20px; }
+  .section-title { margin-bottom: 14px; }
+  .section-desc { margin-bottom: 36px; font-size: 0.95rem; }
+  .dark-band { padding: 56px 20px; }
+  .therapy-card { margin-bottom: 16px; }
+  .therapy-header { padding: 24px 20px 0; }
+  .therapy-body { padding: 0 20px 24px; }
+  .therapy-card h3 { font-size: 1.2rem; }
+  .evidence-box { padding: 20px; }
+  .stats-grid { grid-template-columns: repeat(3, 1fr); gap: 1px; }
+  .stat-cell { padding: 14px 8px; }
+  .stat-cell .val { font-size: 1.3rem; }
   .action-grid { grid-template-columns: 1fr; }
   .center-grid { grid-template-columns: 1fr; }
   .team-grid { grid-template-columns: 1fr; }
-  .conclusion { padding: 80px 20px; }
+  .team-card { padding: 24px 20px; }
+  .conclusion { padding: 56px 20px; }
+  .divider { margin: 8px auto; }
+  .timeline { padding-left: 28px; }
+  .timeline-event { padding: 20px 0; }
+  .timeline-date { font-size: 0.6rem; }
+  .timeline-event h4 { font-size: 1rem; }
+  .risk-table th, .risk-table td { padding: 12px 10px; font-size: 0.8rem; }
+  .insight-grid { grid-template-columns: 1fr; }
+  .question-text { font-size: 0.88rem; }
 }
 @media (max-width: 480px) {
+  .hero { padding: 90px 16px 32px; }
+  .hero h1 { font-size: 1.4rem; }
+  .hero-logo-text { font-size: 1.5rem; }
   .stats-grid { grid-template-columns: repeat(2, 1fr); }
   .insight-grid { grid-template-columns: 1fr; }
+  .section { padding: 44px 16px; }
+  .therapy-header { padding: 20px 16px 0; }
+  .therapy-body { padding: 0 16px 20px; }
+  .platform-card { padding: 14px 16px; gap: 10px; }
+  .pc-badge { display: none; }
 }
 
 /* ═══════════ CHAT WIDGET — LIQUID GLASS ═══════════ */
@@ -2639,7 +2667,7 @@ td strong { color: var(--gray-900); }
 <section class="section reveal" id="equipe">
   <div class="section-number">10 — Equipe Médica</div>
   <h2 class="section-title">Profissionais Envolvidos</h2>
-  <div class="section-desc">Médicos que acompanham o caso, com suas funções, credenciais e registros profissionais — 9 profissionais envolvidos</div>
+  <div class="section-desc">Médicos que acompanham o caso, com suas funções, credenciais e registros profissionais — 9 profissionais envolvidos, 4 em destaque</div>
 
   <div class="team-grid">
     <div class="team-card highlight reveal">
@@ -2671,9 +2699,10 @@ td strong { color: var(--gray-900); }
       </div>
       <div class="crm">CRM/SP 97469 — Hospital Albert Einstein</div>
     </div>
-    <div class="team-card reveal">
+    <div class="team-card highlight reveal">
+      <div class="status-badge">Capitão do caso</div>
       <h4>Dr. Guilherme Cutait de Castro Cotti</h4>
-      <div class="role">Cirurgia Colorretal — Cirurgia primária (retossigmoidectomia, nov/2021)</div>
+      <div class="role">Cirurgia Colorretal — Cirurgia primária (retossigmoidectomia, nov/2021) — Coordenação do caso</div>
       <div class="credentials">
         <strong>Professor Assistente do Serviço de Cirurgia do Cólon, Reto e Ânus — HC-FMUSP</strong><br>
         Especialista em Cirurgia do Aparelho Digestivo e Coloproctologia<br>
@@ -2695,9 +2724,10 @@ td strong { color: var(--gray-900); }
       </div>
       <div class="crm">CRM/SP 141957 — Sírio-Libanês</div>
     </div>
-    <div class="team-card reveal">
+    <div class="team-card highlight reveal">
+      <div class="status-badge">Capitã do caso</div>
       <h4>Dra. Maria Ignez Freitas Melro Braghiroli</h4>
-      <div class="role">Oncologia Clínica — Acompanhamento oncológico, PET/CTs e estratégia sistêmica</div>
+      <div class="role">Oncologia Clínica — Acompanhamento oncológico, PET/CTs e estratégia sistêmica — Coordenação do caso</div>
       <div class="credentials">
         <strong>Oncologista Clínica — Especialista em Tumores Gastrointestinais</strong><br>
         Formação: UFBA (2006) • Residência Clínica Médica FMUSP (2009) • Residência Oncologia FMUSP (2013)<br>
@@ -2853,10 +2883,12 @@ td strong { color: var(--gray-900); }
 <!-- ═══════════ JAVASCRIPT ═══════════ -->
 <script>
 // Intersection Observer for reveal animations
+// Mobile-optimized: lower threshold + larger rootMargin for tall sections
+const isMobile = window.innerWidth <= 768;
 const observerOptions = {
   root: null,
-  rootMargin: '0px 0px -60px 0px',
-  threshold: 0.1
+  rootMargin: isMobile ? '200px 0px 200px 0px' : '0px 0px -60px 0px',
+  threshold: isMobile ? 0.01 : 0.1
 };
 
 const observer = new IntersectionObserver((entries) => {
@@ -2868,6 +2900,13 @@ const observer = new IntersectionObserver((entries) => {
 }, observerOptions);
 
 document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+// Fallback: ensure all elements become visible after 3s on mobile
+if (isMobile) {
+  setTimeout(() => {
+    document.querySelectorAll('.reveal').forEach(el => el.classList.add('visible'));
+  }, 3000);
+}
 
 // Navbar scroll effect
 const nav = document.getElementById('mainNav');
@@ -2903,17 +2942,19 @@ const sectionObserver = new IntersectionObserver((entries) => {
 
 sections.forEach(section => sectionObserver.observe(section));
 
-// Subtle parallax for hero (no opacity fade to avoid blank space)
-window.addEventListener('scroll', () => {
-  const scrolled = window.pageYOffset;
-  const hero = document.querySelector('.hero');
-  if (hero && scrolled < window.innerHeight) {
-    const children = hero.querySelectorAll('.hero-logo-text, .hero-eyebrow, h1, .hero-sub, .platform-status, .platform-grid, .hero-stats, .hero-warm, .scroll-indicator');
-    children.forEach(child => {
-      child.style.transform = `translateY(${scrolled * 0.08}px)`;
-    });
-  }
-}, { passive: true });
+// Subtle parallax for hero — disabled on mobile to prevent blank space
+if (!isMobile) {
+  window.addEventListener('scroll', () => {
+    const scrolled = window.pageYOffset;
+    const hero = document.querySelector('.hero');
+    if (hero && scrolled < window.innerHeight) {
+      const children = hero.querySelectorAll('.hero-logo-text, .hero-eyebrow, h1, .hero-sub, .platform-status, .platform-grid, .hero-stats, .hero-warm, .scroll-indicator');
+      children.forEach(child => {
+        child.style.transform = `translateY(${scrolled * 0.08}px)`;
+      });
+    }
+  }, { passive: true });
+}
 
 // Counter animation for hero stats
 const statValues = document.querySelectorAll('.hero-stat-value');
