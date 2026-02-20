@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>OncoSil — Análise Oncológica Estratégica</title>
 <meta name="description" content="Análise estratégica ultra-PhD: Adenocarcinoma colorretal com metástase laríngea rara. Caminhos terapêuticos avançados, consolidados com rigor científico máximo.">
-<link rel="icon" type="image/png" href="oncosil_logo_small.png">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -170,21 +170,24 @@ body {
   background: rgba(255,255,255,0.88);
   box-shadow: 0 4px 30px rgba(0,0,0,0.1), 0 0 0 0.5px rgba(0,0,0,0.06);
 }
-.nav-logo {
-  width: 28px;
-  height: 28px;
-  border-radius: 6px;
-  margin-right: 4px;
+.nav-brand {
+  display: inline-flex;
+  align-items: baseline;
+  font-weight: 700;
+  font-size: 0.82rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  margin-right: 12px;
   flex-shrink: 0;
 }
-.nav-brand {
-  font-weight: 800;
-  font-size: 0.7rem;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
+.brand-onco {
   color: var(--gray-900);
-  white-space: nowrap;
-  margin-right: 8px;
+  font-weight: 800;
+}
+.brand-sil {
+  color: var(--rosa-medium);
+  font-weight: 800;
 }
 .nav a {
   text-decoration: none;
@@ -240,13 +243,22 @@ body {
   pointer-events: none;
 }
 
-.hero-logo {
-  width: 80px;
-  height: 80px;
-  margin-bottom: 24px;
+.hero-logo-text {
+  font-size: 3.2rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  margin-bottom: 28px;
   opacity: 0;
   animation: fadeUp 0.8s 0.2s var(--transition) forwards;
-  filter: drop-shadow(0 2px 8px rgba(0,0,0,0.08));
+}
+.hero-logo-text .brand-onco {
+  color: var(--gray-900);
+  font-weight: 900;
+}
+.hero-logo-text .brand-sil {
+  color: var(--rosa);
+  font-weight: 900;
 }
 
 .hero-eyebrow {
@@ -1041,11 +1053,11 @@ td strong { color: var(--gray-900); }
 /* ─── RESPONSIVE ─── */
 @media (max-width: 768px) {
   .nav { padding: 6px 10px 6px 14px; gap: 2px; top: 8px; }
-  .nav-logo { width: 22px; height: 22px; }
+
   .nav-brand { font-size: 0.6rem; margin-right: 4px; }
   .nav a { font-size: 0.6rem; padding: 5px 7px; }
   .hero { padding: 120px 20px 80px; }
-  .hero-logo { width: 60px; height: 60px; }
+  .hero-logo-text { font-size: 2rem; margin-bottom: 18px; }
   .hero-stats { flex-direction: column; border-radius: var(--radius-md); }
   .hero-stat { padding: 20px 28px; }
   .section { padding: 80px 20px; }
@@ -1067,8 +1079,7 @@ td strong { color: var(--gray-900); }
 
 <!-- ═══════════ NAVIGATION ═══════════ -->
 <nav class="nav" id="mainNav">
-  <img src="oncosil_logo_small.png" alt="OncoSil" class="nav-logo">
-  <span class="nav-brand">OncoSil</span>
+  <span class="nav-brand"><span class="brand-onco">Onco</span><span class="brand-sil">Sil</span></span>
   <a href="#historico">Histórico</a>
   <a href="#riscos">Riscos</a>
   <a href="#desafio">Desafio</a>
@@ -1080,7 +1091,7 @@ td strong { color: var(--gray-900); }
 
 <!-- ═══════════ HERO ═══════════ -->
 <section class="hero">
-  <img src="oncosil_logo_small.png" alt="OncoSil" class="hero-logo">
+  <div class="hero-logo-text"><span class="brand-onco">Onco</span><span class="brand-sil">Sil</span></div>
   <div class="hero-eyebrow">
     <span class="dot"></span>
     Análise Estratégica Ultra-PhD — Consolidada
@@ -2216,7 +2227,7 @@ window.addEventListener('scroll', () => {
   const scrolled = window.pageYOffset;
   const hero = document.querySelector('.hero');
   if (hero && scrolled < window.innerHeight) {
-    const children = hero.querySelectorAll('.hero-logo, .hero-eyebrow, h1, .hero-sub, .hero-stats, .scroll-indicator');
+    const children = hero.querySelectorAll('.hero-logo-text, .hero-eyebrow, h1, .hero-sub, .hero-stats, .scroll-indicator');
     children.forEach(child => {
       child.style.transform = `translateY(${scrolled * 0.08}px)`;
     });

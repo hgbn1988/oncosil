@@ -1,0 +1,6 @@
+Visual check OK:
+- Nav: "ONCO" in black + "SIL" in rosa pastel (small, uppercase, clean)
+- Hero: Large "ONCOSIL" with "SIL" in rosa pastel - looks great, Apple-style
+- No more icon/image logo - pure typography
+- The design is clean, minimal, and cool
+- Ready to push to GitHub Pages
