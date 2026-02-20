@@ -924,6 +924,28 @@ td strong { color: var(--gray-900); }
 .team-card:hover {
   border-color: var(--gray-300);
 }
+.team-card.highlight {
+  background: var(--white);
+  border: 1px solid var(--rosa-medium);
+  box-shadow: 0 0 0 1px var(--rosa-subtle), 0 4px 24px rgba(242,196,206,0.12);
+  grid-column: span 1;
+}
+.team-card.highlight:hover {
+  border-color: var(--rosa);
+  box-shadow: 0 0 0 1px var(--rosa-glow), 0 8px 32px rgba(242,196,206,0.18);
+}
+.team-card.highlight .status-badge {
+  display: inline-block;
+  background: var(--rosa-subtle);
+  color: var(--rosa-dark);
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  padding: 3px 10px;
+  border-radius: 20px;
+  margin-bottom: 8px;
+}
 .team-card h4 {
   font-size: 0.9rem;
   font-weight: 700;
@@ -934,6 +956,22 @@ td strong { color: var(--gray-900); }
   font-size: 0.8rem;
   color: var(--gray-500);
   margin-bottom: 4px;
+  line-height: 1.5;
+}
+.team-card .credentials {
+  font-size: 0.75rem;
+  color: var(--gray-600);
+  margin-top: 6px;
+  line-height: 1.5;
+}
+.team-card .credentials a {
+  color: var(--rosa-dark);
+  text-decoration: none;
+  border-bottom: 1px solid var(--rosa-light);
+  transition: border-color 0.2s;
+}
+.team-card .credentials a:hover {
+  border-color: var(--rosa-dark);
 }
 .team-card .crm {
   font-family: 'JetBrains Mono', monospace;
@@ -1188,7 +1226,7 @@ td strong { color: var(--gray-900); }
       <div class="tl-dot"></div>
       <div class="tl-date">Outubro 2022</div>
       <div class="tl-title">1ª Metástase — Pulmão</div>
-      <div class="tl-text">PET/CT: nódulo pulmonar hipermetabólico 1,1 cm no lobo inferior direito (SUVmax 3,9), cresceu de 0,6 cm. Biópsia + AP confirmam adenocarcinoma de padrão intestinal. Ressecção cirúrgica realizada.</div>
+      <div class="tl-text">PET/CT: nódulo pulmonar hipermetabólico 1,1 cm no lobo inferior direito (SUVmax 3,9), cresceu de 0,6 cm. Biópsia + AP confirmam adenocarcinoma de padrão intestinal. <strong>Ressecção cirúrgica realizada pelo Prof. Dr. Ricardo Terra</strong> (Cirurgia Torácica — Hospital Albert Einstein).</div>
       <div class="tl-tags">
         <span class="tl-tag positive">CK20+</span>
         <span class="tl-tag positive">CDX2+</span>
@@ -1232,6 +1270,17 @@ td strong { color: var(--gray-900); }
         <span class="tl-tag negative">CK7−</span>
         <span class="tl-tag negative">TTF1−</span>
         <span class="tl-tag">SPA26-21747</span>
+      </div>
+    </div>
+
+    <div class="tl-item reveal">
+      <div class="tl-dot" style="background:var(--rosa);"></div>
+      <div class="tl-date">Fevereiro–Março 2026</div>
+      <div class="tl-title">Consulta com Prof. Dr. Luiz Paulo Kowalski</div>
+      <div class="tl-text">Avaliação especializada com o <strong>Prof. Dr. Luiz Paulo Kowalski</strong> — referência mundial em cirurgia de cabeça e pescoço, Líder do Centro de Referência em Tumores de Cabeça e Pescoço do A.C.Camargo Cancer Center, Professor Titular da FMUSP. 40+ anos de experiência, 10.000+ cirurgias, 650+ publicações. Avaliação de alternativas à laringectomia total e definição de estratégia terapêutica integrada.</div>
+      <div class="tl-tags">
+        <span class="tl-tag" style="background:var(--rosa-subtle);color:var(--rosa-dark);">Em andamento</span>
+        <span class="tl-tag" style="background:var(--rosa-subtle);color:var(--rosa-dark);">A.C.Camargo</span>
       </div>
     </div>
   </div>
@@ -2060,7 +2109,7 @@ td strong { color: var(--gray-900); }
       <div>
         <h4>A.C. Camargo Cancer Center</h4>
         <div class="loc">São Paulo, Brasil</div>
-        <div class="desc">Centro especializado em câncer, equipe multidisciplinar, tumor board</div>
+        <div class="desc">Centro especializado em câncer — <strong>Prof. Dr. Luiz Paulo Kowalski</strong> lidera o Centro de Referência em Tumores de Cabeça e Pescoço. Consultas em andamento</div>
       </div>
     </div>
     <div class="center-card reveal">
@@ -2070,7 +2119,7 @@ td strong { color: var(--gray-900); }
       <div>
         <h4>Hospital Israelita Albert Einstein</h4>
         <div class="loc">São Paulo, Brasil</div>
-        <div class="desc">Programa de oncologia avançada, genômica, ensaios clínicos</div>
+        <div class="desc">Programa de oncologia avançada, genômica, ensaios clínicos — <strong>Prof. Dr. Ricardo Terra</strong> realizou a ressecção pulmonar (Centro de Excelência em Tórax)</div>
       </div>
     </div>
   </div>
@@ -2082,12 +2131,41 @@ td strong { color: var(--gray-900); }
 <section class="section reveal">
   <div class="section-number">10 — Equipe Médica</div>
   <h2 class="section-title">Profissionais Envolvidos</h2>
-  <div class="section-desc">Médicos que acompanham o caso, com suas funções e registros profissionais</div>
+  <div class="section-desc">Médicos que acompanham o caso, com suas funções, credenciais e registros profissionais — 9 profissionais envolvidos</div>
 
   <div class="team-grid">
+    <div class="team-card highlight reveal">
+      <div class="status-badge">Consulta em andamento</div>
+      <h4>Prof. Dr. Luiz Paulo Kowalski</h4>
+      <div class="role">Cirurgia de Cabeça e Pescoço — Avaliação da recidiva subglótica e estratégia de preservação laríngea</div>
+      <div class="credentials">
+        <strong>Professor Titular de Cirurgia de Cabeça e Pescoço da FMUSP</strong><br>
+        Líder do Centro de Referência em Tumores de Cabeça e Pescoço — A.C.Camargo Cancer Center (desde 1990)<br>
+        Coordenador do Centro de Referência em Oncologia de Cabeça e Pescoço — ICESP (desde 2019)<br>
+        Formação: UFPR (1979) • Residência Oncologia Cirúrgica A.C.Camargo • Mestrado e Doutorado UNIFESP<br>
+        <strong>40+ anos de experiência • 10.000+ cirurgias • 650+ artigos publicados</strong><br>
+        Referência mundial — experiência comparável ao Memorial Sloan Kettering (NY)<br>
+        <a href="https://www.clinicakowalski.com.br/sobre-dr-luiz-paulo-kowalski" target="_blank" rel="noopener">clinicakowalski.com.br</a>
+      </div>
+      <div class="crm">A.C.Camargo Cancer Center / FMUSP / ICESP</div>
+    </div>
+    <div class="team-card highlight reveal">
+      <div class="status-badge">Cirurgião torácico do caso</div>
+      <h4>Prof. Dr. Ricardo Mingarini Terra</h4>
+      <div class="role">Cirurgia Torácica — Ressecção da metástase pulmonar (out/2022)</div>
+      <div class="credentials">
+        <strong>Professor Associado de Cirurgia Torácica da FMUSP</strong> • MD, MPH, PhD<br>
+        Coordenador do Centro de Excelência em Tórax — Hospital Israelita Albert Einstein (desde 2022)<br>
+        Diretor Científico da Sociedade Brasileira de Cirurgia Torácica (2015–2021)<br>
+        Formação: FMUSP (1999) • Residência Cirurgia Geral e Torácica HC-FMUSP<br>
+        Especialista em cirurgia torácica oncológica e cirurgia robótica • 265+ publicações • 10.600+ citações<br>
+        <a href="https://www.drricardoterra.com.br/" target="_blank" rel="noopener">drricardoterra.com.br</a>
+      </div>
+      <div class="crm">CRM/SP 97469 — Hospital Albert Einstein</div>
+    </div>
     <div class="team-card reveal">
       <h4>Dr. Guilherme Cutait de Castro Cotti</h4>
-      <div class="role">Cirurgia primária + revisão Sírio-Libanês</div>
+      <div class="role">Cirurgia primária (retossigmoidectomia, nov/2021) + revisão patológica Sírio-Libanês</div>
       <div class="crm">Sírio-Libanês</div>
     </div>
     <div class="team-card reveal">
