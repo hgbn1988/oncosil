@@ -1,0 +1,10 @@
+Platform Landing Page v3.5 - Visual Observation:
+- Hero: ONCOSIL logo (Onco black, SIL rosa pastel) - PERFECT
+- Eyebrow pill: "PLATAFORMA DE SUPORTE ONCOLÓGICO INTELIGENTE" with green dot - PERFECT
+- H1: "Cuidado, ciência e esperança em um só lugar" - PERFECT, very friendly
+- Subtitle with Silmara name bold - PERFECT
+- Status banner: green dot + "Atualizado em 20/02/2026 — Dados AACR-IO Conference integrados" - PERFECT
+- Platform cards are below the fold - need to scroll to see them
+- The page looks great but the cards need to be visible. The hero is too tall.
+- Need to reduce hero padding or make the title smaller to fit cards above fold
+- Nav pill with liquid glass effect - PERFECT
