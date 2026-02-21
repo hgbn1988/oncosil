@@ -1,0 +1,20 @@
+CRITICAL BUG FOUND:
+When clicking "Terapias" in the nav, the page scrolls to the terapias section.
+But the screenshot shows a COMPLETELY BLANK area - no content visible at all.
+The markdown extraction shows the content IS there (all therapy cards exist in the HTML).
+But visually, nothing renders.
+
+ROOT CAUSE ANALYSIS:
+1. The section has class="section reveal" - starts with opacity:0
+2. The therapy-cards inside also have class="therapy-card reveal" - also opacity:0
+3. The IntersectionObserver needs to trigger to add "visible" class
+4. When smooth-scrolling directly to the section, the observer may not trigger fast enough
+5. OR the section is so large that threshold:0.1 never triggers (10% of a huge section)
+
+THE REAL PROBLEM: The parent section has opacity:0 and the children also have opacity:0.
+Even if the observer triggers for the section, the children inside still need to be observed.
+But since the parent starts at opacity:0, the children may never intersect the viewport
+because they're invisible (opacity:0 doesn't affect layout but affects visual rendering).
+
+SOLUTION: Remove "reveal" from section-level containers. Only keep reveal on individual cards/items.
+This way the section structure is always visible, and only the cards animate in.
