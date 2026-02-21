@@ -86,21 +86,15 @@ body {
   color: var(--gray-900);
 }
 
-/* ─── REVEAL ANIMATIONS ─── */
-.reveal {
-  opacity: 0;
-  transform: translateY(40px);
-  transition: opacity 0.9s var(--transition), transform 0.9s var(--transition);
-}
-.reveal.visible {
+/* ─── CONTENT ALWAYS VISIBLE ─── */
+/* Reveal animations removed to ensure 100% content visibility on all devices */
+.reveal, .reveal.visible {
   opacity: 1;
-  transform: translateY(0);
+  transform: none;
 }
-.reveal-delay-1 { transition-delay: 0.1s; }
-.reveal-delay-2 { transition-delay: 0.2s; }
-.reveal-delay-3 { transition-delay: 0.3s; }
-.reveal-delay-4 { transition-delay: 0.4s; }
-.reveal-delay-5 { transition-delay: 0.5s; }
+.reveal-delay-1, .reveal-delay-2, .reveal-delay-3, .reveal-delay-4, .reveal-delay-5 {
+  transition-delay: 0s;
+}
 
 @keyframes fadeUp {
   from { opacity: 0; transform: translateY(30px); }
@@ -369,13 +363,13 @@ body {
 
 /* ─── SECTIONS ─── */
 .section {
-  padding: 120px 24px;
+  padding: 80px 24px;
   max-width: 1100px;
   margin: 0 auto;
 }
 .section-sm { max-width: 860px; }
 .section-full {
-  padding: 120px 24px;
+  padding: 80px 24px;
   max-width: 100%;
 }
 
@@ -1681,9 +1675,9 @@ td strong { color: var(--gray-900); }
 
 <!-- ═══════════ 01 — RESUMO EXECUTIVO ═══════════ -->
 <section class="section section-sm" id="resumo">
-  <div class="section-number reveal">01 — Resumo Executivo</div>
-  <h2 class="section-title reveal">Visão Geral do Caso</h2>
-  <div class="section-desc reveal">Um caso raro, complexo e desafiador — mas com caminhos reais a serem explorados</div>
+  <div class="section-number">01 — Resumo Executivo</div>
+  <h2 class="section-title">Visão Geral do Caso</h2>
+  <div class="section-desc">Um caso raro, complexo e desafiador — mas com caminhos reais a serem explorados</div>
 
   <div class="disclaimer-banner">
     <strong>Aviso Importante:</strong> Este relatório é uma análise de consultoria baseada em inteligência artificial e pesquisa científica. Ele <strong>não substitui</strong> o julgamento clínico de médicos especialistas. Todas as decisões terapêuticas devem ser tomadas em conjunto com a equipe médica assistente, considerando as particularidades individuais da paciente. Dados marcados como "relato familiar" necessitam confirmação em prontuário.
@@ -1699,12 +1693,12 @@ td strong { color: var(--gray-900); }
 
 <!-- ═══════════ 02 — LINHA DO TEMPO ═══════════ -->
 <section class="section" id="historico">
-  <div class="section-number reveal">02 — Sumário Clínico-Patológico</div>
-  <h2 class="section-title reveal">Linha do Tempo</h2>
-  <div class="section-desc reveal">Cada evento extraído diretamente dos laudos originais, com documento-fonte referenciado</div>
+  <div class="section-number">02 — Sumário Clínico-Patológico</div>
+  <h2 class="section-title">Linha do Tempo</h2>
+  <div class="section-desc">Cada evento extraído diretamente dos laudos originais, com documento-fonte referenciado</div>
 
   <div class="timeline">
-    <div class="tl-item reveal">
+    <div class="tl-item">
       <div class="tl-dot"></div>
       <div class="tl-date">Novembro 2021</div>
       <div class="tl-title">Diagnóstico Primário e Cirurgia</div>
@@ -1714,7 +1708,7 @@ td strong { color: var(--gray-900); }
       </div>
     </div>
 
-    <div class="tl-item reveal">
+    <div class="tl-item">
       <div class="tl-dot"></div>
       <div class="tl-date">Dezembro 2021</div>
       <div class="tl-title">Revisão Patológica Sírio-Libanês + MMR</div>
@@ -1726,7 +1720,7 @@ td strong { color: var(--gray-900); }
       </div>
     </div>
 
-    <div class="tl-item reveal">
+    <div class="tl-item">
       <div class="tl-dot"></div>
       <div class="tl-date">2022</div>
       <div class="tl-title">Quimioterapia Adjuvante</div>
@@ -1734,14 +1728,14 @@ td strong { color: var(--gray-900); }
       <div class="tl-tags"><span class="tl-tag negative">Relato familiar</span></div>
     </div>
 
-    <div class="tl-item reveal">
+    <div class="tl-item">
       <div class="tl-dot"></div>
       <div class="tl-date">Agosto 2022</div>
       <div class="tl-title">Colonoscopia de Controle — Normal</div>
       <div class="tl-text">Anastomose colorretal de aspecto endoscópico normal. Ausência de lesões em todos os segmentos.</div>
     </div>
 
-    <div class="tl-item reveal">
+    <div class="tl-item">
       <div class="tl-dot"></div>
       <div class="tl-date">Outubro 2022</div>
       <div class="tl-title">1ª Metástase — Pulmão</div>
@@ -1753,7 +1747,7 @@ td strong { color: var(--gray-900); }
       </div>
     </div>
 
-    <div class="tl-item reveal">
+    <div class="tl-item">
       <div class="tl-dot"></div>
       <div class="tl-date">Maio 2025</div>
       <div class="tl-title">2ª Metástase — Laringe (1ª vez)</div>
@@ -1767,7 +1761,7 @@ td strong { color: var(--gray-900); }
       </div>
     </div>
 
-    <div class="tl-item reveal">
+    <div class="tl-item">
       <div class="tl-dot"></div>
       <div class="tl-date">Maio 2025</div>
       <div class="tl-title">PET/CT — Sem Doença Ativa</div>
@@ -1777,7 +1771,7 @@ td strong { color: var(--gray-900); }
       </div>
     </div>
 
-    <div class="tl-item critical reveal">
+    <div class="tl-item critical">
       <div class="tl-dot"></div>
       <div class="tl-date">Fevereiro 2026</div>
       <div class="tl-title">Recidiva na Subglote (2ª vez)</div>
@@ -1792,7 +1786,7 @@ td strong { color: var(--gray-900); }
       </div>
     </div>
 
-    <div class="tl-item reveal">
+    <div class="tl-item">
       <div class="tl-dot" style="background:var(--rosa);"></div>
       <div class="tl-date">Fevereiro–Março 2026</div>
       <div class="tl-title">Consulta com Prof. Dr. Luiz Paulo Kowalski</div>
@@ -1809,9 +1803,9 @@ td strong { color: var(--gray-900); }
 
 <!-- ═══════════ 03 — FATORES DE ALTO RISCO ═══════════ -->
 <section class="section" id="riscos">
-  <div class="section-number reveal">03 — Fatores de Alto Risco</div>
-  <h2 class="section-title reveal">Biologia Tumoral</h2>
-  <div class="section-desc reveal">Fatores anatomopatológicos que definem o comportamento agressivo deste tumor</div>
+  <div class="section-number">03 — Fatores de Alto Risco</div>
+  <h2 class="section-title">Biologia Tumoral</h2>
+  <div class="section-desc">Fatores anatomopatológicos que definem o comportamento agressivo deste tumor</div>
 
   <div class="table-wrap">
     <table>
@@ -1861,40 +1855,40 @@ td strong { color: var(--gray-900); }
 <div class="divider"></div>
 
 <!-- ═══════════ 04 — PONTOS CRÍTICOS ═══════════ --<section class="section">
-  <div class="section-number reveal">03.5 — Pontos Críticos</div>
-  <h2 class="section-title reveal">Análise Estratégica</h2>
-  <div class="section-desc reveal">Os cinco pontos que definem a estratégia terapêutica</div>
+  <div class="section-number">03.5 — Pontos Críticos</div>
+  <h2 class="section-title">Análise Estratégica</h2>
+  <div class="section-desc">Os cinco pontos que definem a estratégia terapêutica</div>
 
   <div class="insight-grid">
-    <div class="insight-card reveal reveal-delay-1">
+    <div class="insight-card reveal-delay-1">
       <div class="insight-icon">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
       </div>
       <h3>Doença Oligometastática</h3>
       <p>Metástases surgindo uma de cada vez (pulmão 2022, laringe 2025, subglote 2026), com PET/CT limpo entre elas. Padrão favorável a abordagens focais com intenção curativa.</p>
     </div>
-    <div class="insight-card reveal reveal-delay-2">
+    <div class="insight-card reveal-delay-2">
       <div class="insight-icon">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
       </div>
       <h3>MSS/pMMR — O Desafio Central</h3>
       <p>~95% dos CCR metastáticos são MSS. Até recentemente, sem opções de imunoterapia eficazes. Novas combinações (BOT/BAL, Cadonilimab) estão mudando este cenário.</p>
     </div>
-    <div class="insight-card reveal reveal-delay-3">
+    <div class="insight-card reveal-delay-3">
       <div class="insight-icon">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
       </div>
       <h3>Metástase Laríngea Recorrente</h3>
       <p>~15–20 casos documentados na literatura mundial. A recorrência após cirurgia + radioterapia sugere tropismo particular ou doença microscópica residual.</p>
     </div>
-    <div class="insight-card reveal reveal-delay-4">
+    <div class="insight-card reveal-delay-4">
       <div class="insight-icon">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
       </div>
       <h3>Signatera Negativo + Recidiva</h3>
       <p>ctDNA negativo em mai/2025 era bom sinal, mas a recidiva indica doença residual mínima abaixo do limite de detecção. Repetir agora é fundamental.</p>
     </div>
-    <div class="insight-card reveal reveal-delay-5">
+    <div class="insight-card reveal-delay-5">
       <div class="insight-icon">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
       </div>
@@ -1906,19 +1900,19 @@ td strong { color: var(--gray-900); }
 
 <!-- ═══════════ DARK BAND ═══════════ -->
 <section class="dark-band" id="desafio">
-  <div class="section-number reveal">O Desafio Central</div>
+  <div class="section-number">O Desafio Central</div>
   <h2>Metástase laríngea rara de CCR com resistência terapêutica</h2>
   <p>A falha no controle local (recidiva após cirurgia + radioterapia) combinada com o status MSS/pMMR exige uma estratégia que integre terapia sistêmica de ponta com abordagem local de máxima precisão. A ciência oncológica avançou vertiginosamente nos últimos dois anos — e novas esperanças surgiram precisamente para este perfil de paciente.</p>
 </section>
 
 <!-- ═══════════ 05 — TERAPIAS ═══════════ -->
 <section class="section" id="terapias">
-  <div class="section-number reveal">05 — Fronteiras Terapêuticas</div>
-  <h2 class="section-title reveal">Caminhos para a Cura Potencial</h2>
-  <div class="section-desc reveal">Terapias de ponta mapeadas com rigor científico — organizadas por relevância e nível de evidência para o caso específico</div>
+  <div class="section-number">05 — Fronteiras Terapêuticas</div>
+  <h2 class="section-title">Caminhos para a Cura Potencial</h2>
+  <div class="section-desc">Terapias de ponta mapeadas com rigor científico — organizadas por relevância e nível de evidência para o caso específico</div>
 
   <!-- TERAPIA 01 — BOT/BAL -->
-  <div class="therapy-card reveal">
+  <div class="therapy-card">
     <div class="therapy-header">
       <div class="therapy-priority top">Terapia 01 — Prioridade Máxima</div>
       <h3>Botensilimab + Balstilimab</h3>
@@ -1956,7 +1950,7 @@ td strong { color: var(--gray-900); }
   </div>
 
   <!-- TERAPIA 02 — Cadonilimab -->
-  <div class="therapy-card reveal">
+  <div class="therapy-card">
     <div class="therapy-header">
       <div class="therapy-priority top">Terapia 02 — Biespecífico de Nova Geração</div>
       <h3>Cadonilimab (AK104) + FOLFOXIRI + Bevacizumab</h3>
@@ -1976,7 +1970,7 @@ td strong { color: var(--gray-900); }
   </div>
 
   <!-- TERAPIA 03 — Ivonescimab -->
-  <div class="therapy-card reveal">
+  <div class="therapy-card">
     <div class="therapy-header">
       <div class="therapy-priority top">Terapia 03 — Biespecífico PD-1/VEGF</div>
       <h3>Ivonescimab (AK112) + FOLFOXIRI</h3>
@@ -1992,7 +1986,7 @@ td strong { color: var(--gray-900); }
   </div>
 
   <!-- TERAPIA 04 — SBRT -->
-  <div class="therapy-card reveal">
+  <div class="therapy-card">
     <div class="therapy-header">
       <div class="therapy-priority top">Terapia 04 — Preservação de Órgão</div>
       <h3>SBRT — Principal Alternativa à Laringectomia</h3>
@@ -2012,7 +2006,7 @@ td strong { color: var(--gray-900); }
   </div>
 
   <!-- TERAPIA 05 — TILs -->
-  <div class="therapy-card reveal">
+  <div class="therapy-card">
     <div class="therapy-header">
       <div class="therapy-priority">Terapia 05 — Terapia Celular</div>
       <h3>TILs Selecionados + Pembrolizumab</h3>
@@ -2032,7 +2026,7 @@ td strong { color: var(--gray-900); }
   </div>
 
   <!-- TERAPIA 06 — Vilastobart -->
-  <div class="therapy-card reveal">
+  <div class="therapy-card">
     <div class="therapy-header">
       <div class="therapy-priority">Terapia 06 — Imunoterapia de Nova Geração</div>
       <h3>Vilastobart/XTX101 + Atezolizumab</h3>
@@ -2048,7 +2042,7 @@ td strong { color: var(--gray-900); }
   </div>
 
   <!-- TERAPIA 07 — Muzastotug -->
-  <div class="therapy-card reveal">
+  <div class="therapy-card">
     <div class="therapy-header">
       <div class="therapy-priority">Terapia 07 — Imunoterapia Emergente</div>
       <h3>Muzastotug + Pembrolizumab</h3>
@@ -2060,7 +2054,7 @@ td strong { color: var(--gray-900); }
   </div>
 
   <!-- TERAPIA 08 — IBI363 -->
-  <div class="therapy-card reveal">
+  <div class="therapy-card">
     <div class="therapy-header">
       <div class="therapy-priority">Terapia 08 — Biespecífico</div>
       <h3>IBI363 — Biespecífico PD-1/IL-2</h3>
@@ -2072,7 +2066,7 @@ td strong { color: var(--gray-900); }
   </div>
 
   <!-- TERAPIA 09 — Vacinas -->
-  <div class="therapy-card reveal">
+  <div class="therapy-card">
     <div class="therapy-header">
       <div class="therapy-priority">Terapia 09 — Vacinas Personalizadas</div>
       <h3>GRANITE + NeoAg-VAX</h3>
@@ -2085,7 +2079,7 @@ td strong { color: var(--gray-900); }
   </div>
 
   <!-- TERAPIA 10 — IM96 CAR-T -->
-  <div class="therapy-card reveal">
+  <div class="therapy-card">
     <div class="therapy-header">
       <div class="therapy-priority">Terapia 10 — CAR-T para CCR</div>
       <h3>IM96 — Anti-GUCY2C CAR-T</h3>
@@ -2101,7 +2095,7 @@ td strong { color: var(--gray-900); }
   </div>
 
   <!-- TERAPIA 11 — NK -->
-  <div class="therapy-card reveal">
+  <div class="therapy-card">
     <div class="therapy-header">
       <div class="therapy-priority">Terapia 11 — Terapia Celular</div>
       <h3>Células NK + Cetuximab</h3>
@@ -2113,7 +2107,7 @@ td strong { color: var(--gray-900); }
   </div>
 
   <!-- TERAPIA 12 — FMT -->
-  <div class="therapy-card reveal">
+  <div class="therapy-card">
     <div class="therapy-header">
       <div class="therapy-priority">Terapia 12 — Microbioma + Imunoterapia</div>
       <h3>FMT + Tislelizumab + Fruquintinib (RENMIN-215)</h3>
@@ -2129,7 +2123,7 @@ td strong { color: var(--gray-900); }
   </div>
 
   <!-- TERAPIA 13 — CRISPR-TILs -->
-  <div class="therapy-card reveal">
+  <div class="therapy-card">
     <div class="therapy-header">
       <div class="therapy-priority">Terapia 13 — Terapia Celular Avançada</div>
       <h3>CRISPR-TILs</h3>
@@ -2145,8 +2139,8 @@ td strong { color: var(--gray-900); }
   </div>
 
   <!-- TABELA DE TERAPIAS ADICIONAIS -->
-  <div style="margin-top:48px;" class="reveal">
-    <div class="section-number reveal" style="margin-bottom:16px;">Outras Terapias em Investigação</div>
+  <div style="margin-top:48px;" class="">
+    <div class="section-number" style="margin-bottom:16px;">Outras Terapias em Investigação</div>
     <div class="table-wrap">
       <table>
         <thead>
@@ -2214,8 +2208,8 @@ td strong { color: var(--gray-900); }
   </div>
 
   <!-- Terapias-alvo condicionais ao painel genômico -->
-  <div style="margin-top:48px;" class="reveal">
-    <div class="section-number reveal" style="margin-bottom:16px;">Terapias-Alvo Condicionais ao Painel Genômico (NGS)</div>
+  <div style="margin-top:48px;" class="">
+    <div class="section-number" style="margin-bottom:16px;">Terapias-Alvo Condicionais ao Painel Genômico (NGS)</div>
     <div class="table-wrap">
       <table>
         <thead>
@@ -2271,16 +2265,16 @@ td strong { color: var(--gray-900); }
 
 <!-- ═══════════ 06 — PAINEL GENÔMICO ═══════════ -->
 <section class="section" id="genomico">
-  <div class="section-number reveal">06 — Painel Genômico Pendente</div>
-  <h2 class="section-title reveal">O Mapa Molecular do Tumor</h2>
-  <div class="section-desc reveal">O perfil molecular completo é a chave que abre (ou fecha) portas terapêuticas. PRIORIDADE #1</div>
+  <div class="section-number">06 — Painel Genômico Pendente</div>
+  <h2 class="section-title">O Mapa Molecular do Tumor</h2>
+  <div class="section-desc">O perfil molecular completo é a chave que abre (ou fecha) portas terapêuticas. PRIORIDADE #1</div>
 
-  <div class="callout-rosa callout reveal">
+  <div class="callout-rosa callout">
     <div class="callout-label">Ação Urgente</div>
     <p>Solicitar painel genômico completo (NGS) no bloco <strong>SPA26-21747A1</strong> (tecido mais recente, fev/2026). Opção recomendada: <strong>FoundationOne CDx</strong> (324 genes) via Roche Brasil. Alternativas: Tempus xT, MSK-IMPACT.</p>
   </div>
 
-  <div class="table-wrap reveal">
+  <div class="table-wrap">
     <table>
       <thead>
         <tr>
@@ -2344,47 +2338,47 @@ td strong { color: var(--gray-900); }
 
 <!-- ═══════════ 07 — ROTEIRO ESTRATÉGICO ═══════════ -->
 <section class="section" id="roteiro">
-  <div class="section-number reveal">07 — Roteiro Estratégico</div>
-  <h2 class="section-title reveal">Plano de Ação</h2>
-  <div class="section-desc reveal">Ações concretas organizadas por prioridade e urgência</div>
+  <div class="section-number">07 — Roteiro Estratégico</div>
+  <h2 class="section-title">Plano de Ação</h2>
+  <div class="section-desc">Ações concretas organizadas por prioridade e urgência</div>
 
   <div class="action-grid">
-    <div class="action-card reveal reveal-delay-1">
+    <div class="action-card reveal-delay-1">
       <div class="action-icon">
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
       </div>
       <h4>1. Painel Genômico (NGS)</h4>
       <p>Solicitar FoundationOne CDx no bloco SPA26-21747A1. KRAS, NRAS, BRAF, HER2, TMB, NTRK, RET, POLE. Prazo: imediato.</p>
     </div>
-    <div class="action-card reveal reveal-delay-2">
+    <div class="action-card reveal-delay-2">
       <div class="action-icon">
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
       </div>
       <h4>2. Reestadiamento Atualizado</h4>
       <p>PET/CT atualizado (último é de mai/2025). TC/RM pescoço/laringotraqueal. Repetir Signatera (ctDNA).</p>
     </div>
-    <div class="action-card reveal reveal-delay-3">
+    <div class="action-card reveal-delay-3">
       <div class="action-icon">
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
       </div>
       <h4>3. Buscar Acesso a BOT/BAL</h4>
       <p>Várias vias de acesso: <strong>BATTMAN Fase 3</strong> (834 pts, sites em ativação); NCT07227636 (recrutando); AAC na França (programa nacional, expandido jan/2026); <strong>Brasil: programa de paciente nomeado já disponível</strong>. Contatar Agenus diretamente.</p>
     </div>
-    <div class="action-card reveal reveal-delay-4">
+    <div class="action-card reveal-delay-4">
       <div class="action-icon">
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
       </div>
       <h4>4. Segundas Opiniões</h4>
       <p>MD Anderson, MSK, NCI/NIH (TILs), Institut Gustave Roussy. Enviar caso para tumor board internacional.</p>
     </div>
-    <div class="action-card reveal reveal-delay-5">
+    <div class="action-card reveal-delay-5">
       <div class="action-icon">
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
       </div>
       <h4>5. Preservação de Tecido</h4>
       <p>Garantir que tecido fresco/congelado esteja disponível para TILs e futuras análises moleculares.</p>
     </div>
-    <div class="action-card reveal">
+    <div class="action-card">
       <div class="action-icon">
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="21" x2="9" y2="9"/></svg>
       </div>
@@ -2394,8 +2388,8 @@ td strong { color: var(--gray-900); }
   </div>
 
   <!-- Ensaios Clínicos -->
-  <div style="margin-top:48px;" class="reveal">
-    <div class="section-number reveal" style="margin-bottom:16px;">Ensaios Clínicos Mapeados</div>
+  <div style="margin-top:48px;" class="">
+    <div class="section-number" style="margin-bottom:16px;">Ensaios Clínicos Mapeados</div>
     <div class="table-wrap">
       <table>
         <thead>
@@ -2498,7 +2492,7 @@ td strong { color: var(--gray-900); }
   </div>
 
   <!-- Decisão sobre a laringe -->
-  <div class="callout reveal" style="margin-top:24px;">
+  <div class="callout" style="margin-top:24px;">
     <div class="callout-label">Decisão sobre a Laringe — Após Resultados</div>
     <p><strong>Opção A:</strong> SBRT focal ± terapia sistêmica (preserva laringe).<br>
     <strong>Opção B:</strong> Laringectomia parcial + terapia sistêmica.<br>
@@ -2511,12 +2505,12 @@ td strong { color: var(--gray-900); }
 
 <!-- ═══════════ 08 — PERGUNTAS PARA A EQUIPE ═══════════ -->
 <section class="section section-sm" id="perguntas">
-  <div class="section-number reveal">08 — Questões para a Consulta Médica</div>
-  <h2 class="section-title reveal">Perguntas-Chave</h2>
-  <div class="section-desc reveal">Questões estratégicas para discutir com a equipe médica, organizadas por tema</div>
+  <div class="section-number">08 — Questões para a Consulta Médica</div>
+  <h2 class="section-title">Perguntas-Chave</h2>
+  <div class="section-desc">Questões estratégicas para discutir com a equipe médica, organizadas por tema</div>
 
-  <div style="margin-bottom:32px;" class="reveal">
-    <div class="section-number reveal" style="margin-bottom:16px;">Sobre Tratamento Sistêmico</div>
+  <div style="margin-bottom:32px;" class="">
+    <div class="section-number" style="margin-bottom:16px;">Sobre Tratamento Sistêmico</div>
     <div class="question-list">
       <div class="question-item">
         <div class="question-num">01</div>
@@ -2541,8 +2535,8 @@ td strong { color: var(--gray-900); }
     </div>
   </div>
 
-  <div class="reveal">
-    <div class="section-number reveal" style="margin-bottom:16px;">Sobre Tratamento Local</div>
+  <div class="">
+    <div class="section-number" style="margin-bottom:16px;">Sobre Tratamento Local</div>
     <div class="question-list">
       <div class="question-item">
         <div class="question-num">06</div>
@@ -2572,12 +2566,12 @@ td strong { color: var(--gray-900); }
 
 <!-- ═══════════ 09 — CENTROS DE REFERÊNCIA ═══════════ -->
 <section class="section" id="centros">
-  <div class="section-number reveal">09 — Centros de Referência</div>
-  <h2 class="section-title reveal">Onde Buscar Tratamento</h2>
-  <div class="section-desc reveal">Centros de excelência com expertise em oncologia colorretal avançada, ensaios clínicos e terapias de ponta</div>
+  <div class="section-number">09 — Centros de Referência</div>
+  <h2 class="section-title">Onde Buscar Tratamento</h2>
+  <div class="section-desc">Centros de excelência com expertise em oncologia colorretal avançada, ensaios clínicos e terapias de ponta</div>
 
   <div class="center-grid">
-    <div class="center-card reveal reveal-delay-1">
+    <div class="center-card reveal-delay-1">
       <div class="center-icon">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M3 21h18M3 7v1a3 3 0 006 0V7m0 1a3 3 0 006 0V7m0 1a3 3 0 006 0V7H3l2-4h14l2 4"/></svg>
       </div>
@@ -2587,7 +2581,7 @@ td strong { color: var(--gray-900); }
         <div class="desc">Líder mundial em oncologia, terapia de prótons, ensaios clínicos, NeoAg-VAX</div>
       </div>
     </div>
-    <div class="center-card reveal reveal-delay-2">
+    <div class="center-card reveal-delay-2">
       <div class="center-icon">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M3 21h18M3 7v1a3 3 0 006 0V7m0 1a3 3 0 006 0V7m0 1a3 3 0 006 0V7H3l2-4h14l2 4"/></svg>
       </div>
@@ -2597,7 +2591,7 @@ td strong { color: var(--gray-900); }
         <div class="desc">Referência em CCR, ensaios com BOT/BAL, programa internacional de pacientes</div>
       </div>
     </div>
-    <div class="center-card reveal reveal-delay-3">
+    <div class="center-card reveal-delay-3">
       <div class="center-icon">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M3 21h18M3 7v1a3 3 0 006 0V7m0 1a3 3 0 006 0V7m0 1a3 3 0 006 0V7H3l2-4h14l2 4"/></svg>
       </div>
@@ -2607,7 +2601,7 @@ td strong { color: var(--gray-900); }
         <div class="desc">TILs (Dr. Rosenberg, NCT01174121) — custo coberto pelo trial</div>
       </div>
     </div>
-    <div class="center-card reveal reveal-delay-4">
+    <div class="center-card reveal-delay-4">
       <div class="center-icon">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M3 21h18M3 7v1a3 3 0 006 0V7m0 1a3 3 0 006 0V7m0 1a3 3 0 006 0V7H3l2-4h14l2 4"/></svg>
       </div>
@@ -2617,7 +2611,7 @@ td strong { color: var(--gray-900); }
         <div class="desc">Acesso compassivo BOT/BAL (AAC — programa nacional francês), líder europeu em oncologia</div>
       </div>
     </div>
-    <div class="center-card reveal reveal-delay-5">
+    <div class="center-card reveal-delay-5">
       <div class="center-icon">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M3 21h18M3 7v1a3 3 0 006 0V7m0 1a3 3 0 006 0V7m0 1a3 3 0 006 0V7H3l2-4h14l2 4"/></svg>
       </div>
@@ -2627,7 +2621,7 @@ td strong { color: var(--gray-900); }
         <div class="desc">Trials SBRT + imunoterapia para GI, Células NK (WU-NK-101)</div>
       </div>
     </div>
-    <div class="center-card reveal">
+    <div class="center-card">
       <div class="center-icon">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M3 21h18M3 7v1a3 3 0 006 0V7m0 1a3 3 0 006 0V7m0 1a3 3 0 006 0V7H3l2-4h14l2 4"/></svg>
       </div>
@@ -2637,7 +2631,7 @@ td strong { color: var(--gray-900); }
         <div class="desc">Centro de oncologia de referência no Brasil, possível ponte para ensaios internacionais</div>
       </div>
     </div>
-    <div class="center-card reveal">
+    <div class="center-card">
       <div class="center-icon">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M3 21h18M3 7v1a3 3 0 006 0V7m0 1a3 3 0 006 0V7m0 1a3 3 0 006 0V7H3l2-4h14l2 4"/></svg>
       </div>
@@ -2647,7 +2641,7 @@ td strong { color: var(--gray-900); }
         <div class="desc">Centro especializado em câncer — <strong>Prof. Dr. Luiz Paulo Kowalski</strong> lidera o Centro de Referência em Tumores de Cabeça e Pescoço. Consultas em andamento</div>
       </div>
     </div>
-    <div class="center-card reveal">
+    <div class="center-card">
       <div class="center-icon">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M3 21h18M3 7v1a3 3 0 006 0V7m0 1a3 3 0 006 0V7m0 1a3 3 0 006 0V7H3l2-4h14l2 4"/></svg>
       </div>
@@ -2664,12 +2658,12 @@ td strong { color: var(--gray-900); }
 
 <!-- ═══════════ 10 — EQUIPE MÉDICA ═══════════ -->
 <section class="section" id="equipe">
-  <div class="section-number reveal">10 — Equipe Médica</div>
-  <h2 class="section-title reveal">Profissionais Envolvidos</h2>
-  <div class="section-desc reveal">Médicos que acompanham o caso, com suas funções, credenciais e registros profissionais — 9 profissionais envolvidos, 4 em destaque</div>
+  <div class="section-number">10 — Equipe Médica</div>
+  <h2 class="section-title">Profissionais Envolvidos</h2>
+  <div class="section-desc">Médicos que acompanham o caso, com suas funções, credenciais e registros profissionais — 9 profissionais envolvidos, 4 em destaque</div>
 
   <div class="team-grid">
-    <div class="team-card highlight reveal">
+    <div class="team-card highlight">
       <div class="status-badge">Consulta em andamento</div>
       <h4>Prof. Dr. Luiz Paulo Kowalski</h4>
       <div class="role">Cirurgia de Cabeça e Pescoço — Avaliação da recidiva subglótica e estratégia de preservação laríngea</div>
@@ -2684,7 +2678,7 @@ td strong { color: var(--gray-900); }
       </div>
       <div class="crm">A.C.Camargo Cancer Center / FMUSP / ICESP</div>
     </div>
-    <div class="team-card highlight reveal">
+    <div class="team-card highlight">
       <div class="status-badge">Cirurgião torácico do caso</div>
       <h4>Prof. Dr. Ricardo Mingarini Terra</h4>
       <div class="role">Cirurgia Torácica — Ressecção da metástase pulmonar (out/2022)</div>
@@ -2698,7 +2692,7 @@ td strong { color: var(--gray-900); }
       </div>
       <div class="crm">CRM/SP 97469 — Hospital Albert Einstein</div>
     </div>
-    <div class="team-card highlight reveal">
+    <div class="team-card highlight">
       <div class="status-badge">Capitão do caso</div>
       <h4>Dr. Guilherme Cutait de Castro Cotti</h4>
       <div class="role">Cirurgia Colorretal — Cirurgia primária (retossigmoidectomia, nov/2021) — Coordenação do caso</div>
@@ -2711,7 +2705,7 @@ td strong { color: var(--gray-900); }
       </div>
       <div class="crm">CRM/SP 104330 — Sírio-Libanês / HC-FMUSP</div>
     </div>
-    <div class="team-card reveal">
+    <div class="team-card">
       <h4>Dra. Marianne de Castro Gonçalves, MD, PhD</h4>
       <div class="role">Patologista — Revisão do primário + IHQ MMR + congelação 1ª metástase laríngea</div>
       <div class="credentials">
@@ -2723,7 +2717,7 @@ td strong { color: var(--gray-900); }
       </div>
       <div class="crm">CRM/SP 141957 — Sírio-Libanês</div>
     </div>
-    <div class="team-card highlight reveal">
+    <div class="team-card highlight">
       <div class="status-badge">Capitã do caso</div>
       <h4>Dra. Maria Ignez Freitas Melro Braghiroli</h4>
       <div class="role">Oncologia Clínica — Acompanhamento oncológico, PET/CTs e estratégia sistêmica — Coordenação do caso</div>
@@ -2738,7 +2732,7 @@ td strong { color: var(--gray-900); }
       </div>
       <div class="crm">CRM/SP 128231 — Oncologia D'Or / ICESP</div>
     </div>
-    <div class="team-card reveal">
+    <div class="team-card">
       <h4>Dr. Carlos Braghini</h4>
       <div class="role">Procedimento de biópsia pulmonar (out/2022)</div>
       <div class="credentials">
@@ -2747,7 +2741,7 @@ td strong { color: var(--gray-900); }
       </div>
       <div class="crm">CRM/RJ 5235309</div>
     </div>
-    <div class="team-card reveal">
+    <div class="team-card">
       <h4>Prof. Dr. Dorival de Carlucci Junior, PhD</h4>
       <div class="role">Cirurgia de Cabeça e Pescoço — Cirurgia da 1ª lesão laríngea (mai/2025)</div>
       <div class="credentials">
@@ -2760,7 +2754,7 @@ td strong { color: var(--gray-900); }
       </div>
       <div class="crm">CRM/SP 78603 — HC-FMUSP / VNS</div>
     </div>
-    <div class="team-card reveal">
+    <div class="team-card">
       <h4>Dr. Paulo Rogério Scordamaglio, MSc, PhD</h4>
       <div class="role">Endoscopia Respiratória — Remoção endoscópica da recidiva subglótica (fev/2026)</div>
       <div class="credentials">
@@ -2774,7 +2768,7 @@ td strong { color: var(--gray-900); }
       </div>
       <div class="crm">CRM/SP 91002 — Einstein / VNS</div>
     </div>
-    <div class="team-card reveal">
+    <div class="team-card">
       <h4>Prof. Dr. Fernando Augusto Soares</h4>
       <div class="role">Anatomia Patológica — Responsável técnico pelos laudos anatomopatológicos</div>
       <div class="credentials">
@@ -2795,7 +2789,7 @@ td strong { color: var(--gray-900); }
 <!-- ═══════════ CONCLUSÃO ═══════════ -->
 <section class="conclusion">
   <div class="conclusion-inner">
-    <div class="section-number reveal" style="color:rgba(255,255,255,0.3);">11 — Conclusão</div>
+    <div class="section-number" style="color:rgba(255,255,255,0.3);">11 — Conclusão</div>
     <h2>A janela de oportunidade para agir é agora</h2>
     <p>O caso da Sra. Silmara de Fátima Poli Begueto é complexo, desafiador e raro. A recomendação de laringectomia total é uma abordagem compreensível dentro dos paradigmas convencionais de tratamento para uma doença localmente recorrente e resistente. No entanto, <strong>a ciência oncológica avançou vertiginosamente nos últimos dois anos</strong>, e novas esperanças surgiram precisamente para casos como o dela: tumores colorretais MSS metastáticos.</p>
     <p>A estratégia que oferece a maior chance de cura ou de controle a longo prazo com qualidade de vida não reside em uma única modalidade, mas sim na <strong>integração inteligente de uma terapia sistêmica de ponta com uma abordagem local de máxima precisão e mínima morbidade</strong>. A combinação Botensilimab/Balstilimab representa a maior revolução no tratamento de CCR MSS em décadas — com dados atualizados da AACR-IO (fev/2026) confirmando mOS de 17,2 meses em 341 pacientes e <strong>Fase 3 BATTMAN em ativação</strong>. O acesso a esta terapia deve ser perseguido com máxima urgência, incluindo o <strong>programa de paciente nomeado já disponível no Brasil</strong>. Os biespecíficos chineses (Cadonilimab, Ivonescimab) apresentam dados impressionantes em 1ª linha que são altamente relevantes para este caso. O Zanzalintinib + Atezolizumab (STELLAR-303) tornou-se o <strong>primeiro regime IO com benefício em Fase 3</strong> para CCR MSS refratário, com NDA submetido ao FDA.</p>

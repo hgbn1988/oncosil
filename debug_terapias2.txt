@@ -1,0 +1,6 @@
+OBSERVATION: Navigating to #terapias shows the Resumo Executivo section (01).
+This means the page DID scroll but the terapias section is much further down.
+The content IS rendering (sections are visible, titles show).
+Need to scroll down more to reach the actual terapias section.
+The fix worked - sections are no longer hidden by opacity:0 on the parent.
+Now need to verify the therapy cards themselves are visible.

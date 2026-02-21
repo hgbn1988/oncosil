@@ -1,0 +1,10 @@
+CRITICAL: The smooth scroll JS intercepts ALL anchor clicks and scrolls to the top.
+When I click "Terapias" in the nav, the screenshot shows the HERO section, not the terapias section.
+The markdown extraction DOES show the terapias content exists (BOT/BAL etc) - so the content IS there.
+But the visual viewport shows the hero/landing page area.
+
+The smooth scroll JS must be broken - it's scrolling to the wrong position.
+Need to check the smooth scroll event handler.
+
+Also: the hero has a large blank area between the nav and the platform cards.
+This is the same "blank space" issue Hugo reported on mobile.
